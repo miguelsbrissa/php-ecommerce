@@ -20,8 +20,7 @@
         </ul>
         <div class="menu-nav center">
             <ul>
-                <a href="http://localhost/php-ecommerce/src/pages/produtos.php" class="menu-nav-item">Produtos <i class="menu-nav-item drop"></i></a>
-
+                <a href="http://localhost/php-ecommerce/src/pages/produtos.php" class="menu-nav-item">Produtos <i class="fa-solid fa-chevron-down"></i></i></a>
             </ul>
             <ul>
                 <a href="http://localhost/php-ecommerce/src/pages/sobre.php" class="menu-nav-item">Sobre</a>
@@ -69,9 +68,8 @@
                 <input type="button" value="R$1,99" class="button-price" />
             </div>
         </div>
+
     </div>
-
-
 </body>
 
 </html>
