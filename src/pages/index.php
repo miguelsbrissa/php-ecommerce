@@ -39,34 +39,34 @@
 
         <div class="cards">
             <div class="cards item">
-                <img src="../images/apple.png" alt="Apple" class="img"/>
+                <img src="../images/apple.png" alt="Apple" class="img" />
                 <h1 class="item-name">Apple</h1>
-                <input type="button" value="R$1,99" class="button-price"/>
+                <input type="button" value="R$1,99" class="button-price" />
             </div>
             <div class="cards item">
-                <img src="../images/apple.png" alt="Apple" class="img"/>
+                <img src="../images/apple.png" alt="Apple" class="img" />
                 <h1 class="item-name">Apple</h1>
-                <input type="button" value="R$1,99" class="button-price"/>
+                <input type="button" value="R$1,99" class="button-price" />
             </div>
             <div class="cards item">
-                <img src="../images/apple.png" alt="Apple" class="img"/>
+                <img src="../images/apple.png" alt="Apple" class="img" />
                 <h1 class="item-name">Apple</h1>
-                <input type="button" value="R$1,99" class="button-price"/>
+                <input type="button" value="R$1,99" class="button-price" />
             </div>
             <div class="cards item">
-                <img src="../images/apple.png" alt="Apple" class="img"/>
+                <img src="../images/apple.png" alt="Apple" class="img" />
                 <h1 class="item-name">Apple</h1>
-                <input type="button" value="R$1,99" class="button-price"/>
+                <input type="button" value="R$1,99" class="button-price" />
             </div>
             <div class="cards item">
-                <img src="../images/apple.png" alt="Apple" class="img"/>
+                <img src="../images/apple.png" alt="Apple" class="img" />
                 <h1 class="item-name">Apple</h1>
-                <input type="button" value="R$1,99" class="button-price"/>
+                <input type="button" value="R$1,99" class="button-price" />
             </div>
             <div class="cards item">
-                <img src="../images/apple.png" alt="Apple" class="img"/>
+                <img src="../images/apple.png" alt="Apple" class="img" />
                 <h1 class="item-name">Apple</h1>
-                <input type="button" value="R$1,99" class="button-price"/>
+                <input type="button" value="R$1,99" class="button-price" />
             </div>
         </div>
     </div>
