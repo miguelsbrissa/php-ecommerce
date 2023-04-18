@@ -1,0 +1,13 @@
+.footer {
+    display: flex;
+    width: 100%;
+    padding: 2rem 0;
+    align-items: center;
+    justify-content: center;
+    color: #9fc131;
+    background-color: #042940;
+    font-size: 1rem;
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-weight: 700;
+    margin-top: 2rem;
+}

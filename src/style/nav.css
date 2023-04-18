@@ -1,0 +1,81 @@
+ul,
+a {
+    list-style: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0;
+}
+
+.menu-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: #042940;
+    width: 100%;
+    padding: 1rem 0;
+}
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu-nav-item {
+    margin: 1rem;
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #9fc131;
+    box-shadow: inset 0 0 0 0 #9fc131;
+    padding: 0 0.25rem;
+    transition: color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+.menu-nav-item:hover {
+    box-shadow: inset 500px 0 0 0 #9fc131;
+    color: #042940;
+}
+.logo {
+    text-transform: uppercase;
+    font-family: Indie Flower, Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+        sans-serif;
+    font-size: 2rem;
+    font-weight: 500;
+    display: flex;
+    padding: 0 1rem;
+}
+.bag {
+    font-size: 2rem;
+    padding: 0 1rem;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #9fc131;
+    color: #042940;
+    margin: 0 1rem;
+}
+.dropdown-item {
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #042940;
+    margin: 1rem;
+    padding: 0 0.5rem;
+}
+.dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+}
+.dropdown-item:hover {
+    text-decoration: underline #042940;
+    transition: text-decoration 0.5s ease-in-out;
+}

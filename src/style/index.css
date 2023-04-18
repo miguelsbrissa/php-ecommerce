@@ -1,0 +1,55 @@
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.text {
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #042940;
+    margin: 3rem;
+}
+.cards {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    flex-wrap: wrap;
+}
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    margin: 1rem;
+}
+.img {
+    width: auto;
+    height: 200px;
+}
+.item-name {
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #042940;
+}
+.button-price {
+    background-color: #042940;
+    width: 100%;
+    padding: 1rem;
+    color: #9fc131;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.5rem;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+}
+.button-price:hover {
+    text-decoration: solid underline #9fc131;
+    transition: all 0.3s ease-in-out;
+}
