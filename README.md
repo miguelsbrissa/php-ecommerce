@@ -1,4 +1,4 @@
-# Wikibook
+# E-commerce
 Este projeto foi feito para prática dePHP e tem como ideia um site para e-commerce de produtos saudáveis. Este projeto também possui uma parte voltada somente para o admin onde é possível cadastrar os produtos. 
 
 # Desenvolvimento
