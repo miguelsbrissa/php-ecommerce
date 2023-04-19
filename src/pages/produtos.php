@@ -55,7 +55,6 @@
                 <input type="button" value="R$1,99" class="button-price" />
             </div>
         </div>
-
         <?php include '../components/footer.php'; ?>
 </body>
 

@@ -75,6 +75,10 @@ a {
     display: flex;
     flex-direction: column;
 }
+.dropdown:hover .menu-nav-item{
+    box-shadow: inset 500px 0 0 0 #9fc131;
+    color: #042940;
+}
 .dropdown-item:hover {
     text-decoration: underline #042940;
     transition: text-decoration 0.5s ease-in-out;
