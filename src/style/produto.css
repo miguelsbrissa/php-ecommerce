@@ -1,0 +1,133 @@
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 80vh;
+}
+.left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+.img {
+    width: auto;
+    height: 500px;
+}
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    flex-direction: column;
+}
+h1 {
+    color: #9fc131;
+    font-weight: 700;
+    font-size: 2rem;
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    margin: 1rem;
+}
+.descricao {
+    color: #042940;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    text-align: justify;
+    margin: 1rem;
+    padding: 0;
+}
+label {
+    color: #042940;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+.quantidade {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 1rem;
+}
+.input-qtd {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.quantidade input {
+    border: none;
+    border-bottom: 2px solid #042940;
+    color: #042940;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    width: 20%;
+    margin-left: 1rem;
+    outline: none;
+}
+.quantidade p {
+    color: #9fc131;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+.btn-comprar {
+    background-color: #042940;
+    width: 100%;
+    padding: 1rem;
+    color: #9fc131;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.3rem;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+}
+.btn-comprar:hover {
+    color: #758d24;
+    transition: all 0.3s ease-in-out;
+}
+.cep {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 1rem;
+}
+.input-cep {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.input-cep input {
+    border: none;
+    border-bottom: 2px solid #042940;
+    color: #042940;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    width: 50%;
+    margin-left: 1rem;
+    outline: none;
+}
+.btn-verificar {
+    background-color: #042940;
+    width: 20%;
+    padding: 1rem;
+    color: #9fc131;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.3rem;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+}
+.btn-verificar:hover {
+    color: #758d24;
+    transition: all 0.3s ease-in-out;
+}
