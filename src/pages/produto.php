@@ -15,34 +15,45 @@
 
 <body>
     <?php include '../components/nav.php'; ?>
+    <?php
+    if (isset($_GET['produto'])) {
+        $prod_name =  $_GET['produto'];
+        $sql = "SELECT * FROM produto WHERE nome = '$prod_name'";
+        $result = mysqli_query($conn, $sql);
+        $produto = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $produto = array_pop($produto);
+    }
+    ?>
     <div class="content">
-        <div class="left">
-            <img src="../images/apple.png" alt="Apple" srcset="" class="img">
-        </div>
-        <div class="right">
-            <h1>Apple</h1>
-            <div class="descricao">
-                Ut rhoncus risus eu velit vulputate malesuada. Cras pretium tempor mi,
-                et elementum magna tristique non. Duis et elementum nibh.
-                Aliquam pellentesque, enim sit amet molestie pretium, sapien purus maximus magna,
-                sit amet rhoncus metus massa at metus.
+        <?php if (isset($_GET['produto'])) : ?>
+            <div class="left">
+                <img src="../images/<?php echo $produto['img'] ?>" alt="Apple" srcset="" class="img">
             </div>
-            <div class="quantidade">
-                <div class="input-qtd">
-                    <label for="">Quantidade: </label>
-                    <input type="number" name="quantidade" id="">
+            <div class="right">
+                <h1><?php echo $produto['nome'] ?></h1>
+                <div class="descricao">
+                    <?php echo $produto['descricao'] ?>
                 </div>
-                <p>R$1,99</p>
-            </div>
-            <input type="button" value="Comprar" class="btn-comprar">
-            <div class="cep">
-                <div class="input-cep">
-                    <label for="">CEP: </label>
-                    <input type="text">
+                <div class="quantidade">
+                    <div class="input-qtd">
+                        <label for="">Quantidade: </label>
+                        <input type="number" name="quantidade" id="">
+                    </div>
+                    <p><?php echo $produto['preco'] ?></p>
                 </div>
-                <input type="button" value="Verificar" class="btn-verificar">
+                <input type="button" value="Comprar" class="btn-comprar">
+                <div class="cep">
+                    <div class="input-cep">
+                        <label for="">CEP: </label>
+                        <input type="text">
+                    </div>
+                    <input type="button" value="Verificar" class="btn-verificar">
+                </div>
             </div>
-        </div>
+        <?php else : ?>
+            <h1 class="erro">Produto não encontrado!</h1>
+        <?php endif; ?>
+
     </div>
     <?php include '../components/footer.php'; ?>
 </body>

@@ -51,6 +51,7 @@ input::placeholder{
     justify-content: center;
     width: 80%;
     flex-wrap: wrap;
+    gap: 1rem;
 }
 .item {
     display: flex;
@@ -81,6 +82,7 @@ input::placeholder{
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-weight: 700;
     cursor: pointer;
+    text-align: center;
 }
 .button-price:hover {
     text-decoration: solid underline #9fc131;

@@ -48,7 +48,7 @@
                 <div class="cards item">
                     <img src="../images/<?php echo $produto['img'] ?>" alt="Apple" class="img" />
                     <h1 class="item-name"><?php echo $produto['nome'] ?></h1>
-                    <input type="button" value="R$<?php echo str_replace('.', ',', $produto['preco']); ?>" class="button-price" />
+                    <a href="http://localhost/php-ecommerce/src/pages/produto.php?produto=<?php echo $produto['nome']?>" class="button-price"><?php echo str_replace('.', ',', $produto['preco']); ?></a>
                 </div>
             <?php endforeach; ?>
         </div>
