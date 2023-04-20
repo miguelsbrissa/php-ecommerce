@@ -18,6 +18,7 @@
     justify-content: center;
     width: 80%;
     flex-wrap: wrap;
+    gap: 3rem;
 }
 .item {
     display: flex;
@@ -25,7 +26,6 @@
     align-items: center;
     justify-content: center;
     width: 20%;
-    margin: 1rem;
 }
 .img {
     width: auto;
@@ -48,8 +48,15 @@
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-weight: 700;
     cursor: pointer;
+    text-align: center;
 }
 .button-price:hover {
     text-decoration: solid underline #9fc131;
     transition: all 0.3s ease-in-out;
+}
+.erro{
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #042940;
 }

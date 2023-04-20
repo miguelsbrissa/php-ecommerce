@@ -15,39 +15,26 @@
 
 <body>
     <?php include '../components/nav.php'; ?>
+    <?php
+    $sql = "SELECT * FROM produto";
+    $result = mysqli_query($conn, $sql);
+    $produtos = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    ?>
     <div class="content">
         <h1 class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
         <div class="cards">
-            <div class="cards item">
-                <img src="../images/apple.png" alt="Apple" class="img" />
-                <h1 class="item-name">Apple</h1>
-                <input type="button" value="R$1,99" class="button-price" />
-            </div>
-            <div class="cards item">
-                <img src="../images/apple.png" alt="Apple" class="img" />
-                <h1 class="item-name">Apple</h1>
-                <input type="button" value="R$1,99" class="button-price" />
-            </div>
-            <div class="cards item">
-                <img src="../images/apple.png" alt="Apple" class="img" />
-                <h1 class="item-name">Apple</h1>
-                <input type="button" value="R$1,99" class="button-price" />
-            </div>
-            <div class="cards item">
-                <img src="../images/apple.png" alt="Apple" class="img" />
-                <h1 class="item-name">Apple</h1>
-                <input type="button" value="R$1,99" class="button-price" />
-            </div>
-            <div class="cards item">
-                <img src="../images/apple.png" alt="Apple" class="img" />
-                <h1 class="item-name">Apple</h1>
-                <input type="button" value="R$1,99" class="button-price" />
-            </div>
-            <div class="cards item">
-                <img src="../images/apple.png" alt="Apple" class="img" />
-                <h1 class="item-name">Apple</h1>
-                <input type="button" value="R$1,99" class="button-price" />
-            </div>
+            <?php if (empty(!$produtos)) : ?>
+                <?php foreach ($produtos as $produto) : ?>
+                    <div class="cards item">
+                        <img src="../images/<?php echo $produto['img']?>" alt="Apple" class="img" />
+                        <h1 class="item-name"><?php echo $produto['nome']?></h1>
+                        <a type="button" href="http://localhost/php-ecommerce/src/pages/produto.php?produto=<?php echo $produto['nome']?>" class="button-price">R$<?php echo str_replace('.', ',', $produto['preco']); ?></a>
+                    </div>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <h1 class="erro">Nenhum produto encontrado!</h1>
+            <?php endif; ?>
         </div>
         <?php include '../components/footer.php'; ?>
     </div>

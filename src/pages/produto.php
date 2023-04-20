@@ -37,7 +37,7 @@
                 <div class="quantidade">
                     <div class="input-qtd">
                         <label for="">Quantidade: </label>
-                        <input type="number" name="quantidade" id="">
+                        <input type="number" name="quantidade" id="" min="1" max="100">
                     </div>
                     <p><?php echo $produto['preco'] ?></p>
                 </div>
