@@ -17,7 +17,7 @@
     <?php include '../components/nav.php'; ?>
     <div class="content">
         <div class="top-cards">
-            <h1 class="cat-name">Categorie name</h1>
+            <h1 class="cat-name"><?php echo $_GET['categoria']; ?></h1>
             <div class="input-icon">
                 <i class="fa-solid fa-magnifying-glass icon"></i>
                 <input type="text" name="search" id="search" class="search-input" placeholder="Pesquise um item...">

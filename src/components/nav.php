@@ -10,10 +10,10 @@
             <div class="dropdown">
                 <a href="http://localhost/php-ecommerce/src/pages/produtos.php" class="menu-nav-item dropdownbtn">Produtos <i class="fa-solid fa-chevron-down"></i></i></a>
                 <div class="dropdown-content">
-                    <a href="#" class="dropdown-item">Frutas</a>
-                    <a href="#" class="dropdown-item">Snacks</a>
-                    <a href="#" class="dropdown-item">Café</a>
-                    <a href="#" class="dropdown-item">Vegetais</a>
+                    <a href="http://localhost/php-ecommerce/src/pages/produtos.php?categoria=Frutas" class="dropdown-item">Frutas</a>
+                    <a href="http://localhost/php-ecommerce/src/pages/produtos.php?categoria=Snacks" class="dropdown-item">Snacks</a>
+                    <a href="http://localhost/php-ecommerce/src/pages/produtos.php?categoria=Café" class="dropdown-item">Café</a>
+                    <a href="http://localhost/php-ecommerce/src/pages/produtos.php?categoria=Vegetais" class="dropdown-item">Vegetais</a>
                 </div>
             </div>
 
