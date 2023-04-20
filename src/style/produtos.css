@@ -86,3 +86,10 @@ input::placeholder{
     text-decoration: solid underline #9fc131;
     transition: all 0.3s ease-in-out;
 }
+.erro{
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #042940;
+    margin: 3rem 3rem 35rem 3rem;
+}

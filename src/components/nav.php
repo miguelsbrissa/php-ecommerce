@@ -9,7 +9,7 @@
     <div class="menu-nav center">
         <ul>
             <div class="dropdown">
-                <a href="http://localhost/php-ecommerce/src/pages/produtos.php" class="menu-nav-item dropdownbtn">Produtos <i class="fa-solid fa-chevron-down"></i></i></a>
+                <a href="http://localhost/php-ecommerce/src/pages/#" class="menu-nav-item dropdownbtn">Produtos <i class="fa-solid fa-chevron-down"></i></i></a>
                 <div class="dropdown-content">
                     <a href="http://localhost/php-ecommerce/src/pages/produtos.php?categoria=Frutas" class="dropdown-item">Frutas</a>
                     <a href="http://localhost/php-ecommerce/src/pages/produtos.php?categoria=Snacks" class="dropdown-item">Snacks</a>

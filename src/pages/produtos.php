@@ -15,47 +15,45 @@
 
 <body>
     <?php include '../components/nav.php'; ?>
+    <?php
+    if (isset($_GET['categoria'])) {
+        $cat_name =  $_GET['categoria'];
+        $sql = "SELECT id FROM categoria WHERE nome = '$cat_name'";
+        $result = mysqli_query($conn, $sql);
+        $categoria = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+        $cat_id = $categoria[0]['id'];
+        $sql = "SELECT * FROM produto WHERE categoria_id = $cat_id";
+        $result = mysqli_query($conn, $sql);
+        $produtos_by_cat = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
+    ?>
     <div class="content">
         <div class="top-cards">
-            <h1 class="cat-name"><?php echo isset($_GET['categoria']) ? $_GET['categoria'] : 'Categoria não foi selecionada'; ?></h1>
+            <?php if (isset($_GET['categoria'])) : ?>
+                <h1 class="cat-name"><?php echo $_GET['categoria']; ?></h1>
+            <?php else : ?>
+                <h1 class="erro"> A categoria não foi selecionada! </h1>
+            <?php endif; ?>
             <div class="input-icon">
                 <i class="fa-solid fa-magnifying-glass icon"></i>
                 <input type="text" name="search" id="search" class="search-input" placeholder="Pesquise um item...">
             </div>
         </div>
         <div class="cards">
-            <div class="cards item">
-                <img src="../images/apple.png" alt="Apple" class="img" />
-                <h1 class="item-name">Apple</h1>
-                <input type="button" value="R$1,99" class="button-price" />
-            </div>
-            <div class="cards item">
-                <img src="../images/apple.png" alt="Apple" class="img" />
-                <h1 class="item-name">Apple</h1>
-                <input type="button" value="R$1,99" class="button-price" />
-            </div>
-            <div class="cards item">
-                <img src="../images/apple.png" alt="Apple" class="img" />
-                <h1 class="item-name">Apple</h1>
-                <input type="button" value="R$1,99" class="button-price" />
-            </div>
-            <div class="cards item">
-                <img src="../images/apple.png" alt="Apple" class="img" />
-                <h1 class="item-name">Apple</h1>
-                <input type="button" value="R$1,99" class="button-price" />
-            </div>
-            <div class="cards item">
-                <img src="../images/apple.png" alt="Apple" class="img" />
-                <h1 class="item-name">Apple</h1>
-                <input type="button" value="R$1,99" class="button-price" />
-            </div>
-            <div class="cards item">
-                <img src="../images/apple.png" alt="Apple" class="img" />
-                <h1 class="item-name">Apple</h1>
-                <input type="button" value="R$1,99" class="button-price" />
-            </div>
+            <?php if (empty($produtos_by_cat)) : ?>
+                <h1 class="erro">Não existem produtos nessa categoria ainda! </h1>
+            <?php endif; ?>
+            <?php foreach ($produtos_by_cat as $produto) : ?>
+                <div class="cards item">
+                    <img src="../images/<?php echo $produto['img'] ?>" alt="Apple" class="img" />
+                    <h1 class="item-name"><?php echo $produto['nome'] ?></h1>
+                    <input type="button" value="R$<?php echo str_replace('.', ',', $produto['preco']); ?>" class="button-price" />
+                </div>
+            <?php endforeach; ?>
         </div>
         <?php include '../components/footer.php'; ?>
+    </div>
 </body>
 
 </html>
