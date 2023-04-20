@@ -1,3 +1,4 @@
+<?php include '../database/connection.php'?>
 <nav class="menu-nav">
     <ul>
         <a href="http://localhost/php-ecommerce/src/pages/index.php" class="menu-nav-item logo">
