@@ -34,7 +34,7 @@
             $prod_qtd =  (int)$_POST['qtd'];
             $prod_id =  $produto['id'];
             try {
-                $sql = "INSERT INTO itens_pedido VALUES($prod_qtd, $prod_id, $pedido_id)";
+                $sql = "INSERT INTO itens_pedido VALUES(NULL, $prod_qtd, $prod_id, $pedido_id)";
                 $result = mysqli_query($conn, $sql);
                 echo 'Item adicionado à sacola!';
             } catch (Exception $error) {
