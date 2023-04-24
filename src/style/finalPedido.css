@@ -18,6 +18,8 @@
     align-items: center;
     justify-content: center;
     width: 80%;
+    border-bottom: solid 3px #042940;
+    margin: 1rem;
 }
 .left{
     width: 10%;
@@ -50,7 +52,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 80%;
 }
 .btn-finalizar{
     background-color: #042940;

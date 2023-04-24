@@ -47,7 +47,6 @@
                     </div>
                 </div>
             <?php endforeach; ?>
-
         </div>
         <div class="finalizar">
             <h1 class="text">Valor total:R$<?php echo str_replace('.', ',', $valor_total) ?> </h1>
