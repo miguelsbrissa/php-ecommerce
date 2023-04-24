@@ -45,6 +45,10 @@
                         <h1 class="text">Quantidade: <?php echo $item['qtd'] ?></h1>
                         <h1 class="text">Valor: R$<?php echo str_replace('.', ',', $item['preco'] * $item['qtd']) ?></h1>
                     </div>
+                    <div class="options">
+                        <i class="fa-solid fa-pencil"></i>
+                        <i class="fa-solid fa-trash"></i>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </div>

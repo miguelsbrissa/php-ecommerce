@@ -29,12 +29,21 @@
     justify-content: center;
 }
 .right{
-    width: 50%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     margin: 0 1rem;
+}
+.options{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 2rem;
+    color: #042940;
+    gap: 1rem;
 }
 .text{
     font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
