@@ -30,6 +30,6 @@ $categorias = mysqli_fetch_all($result, MYSQLI_ASSOC);
         </ul>
     </div>
     <ul>
-        <a href="http://localhost/php-ecommerce/src/pages/index.php" class="menu-nav-item bag"><i class="fa-solid fa-bag-shopping"></i></a>
+        <a href="http://localhost/php-ecommerce/src/pages/finalPedido.php" class="menu-nav-item bag"><i class="fa-solid fa-bag-shopping"></i></a>
     </ul>
 </nav>

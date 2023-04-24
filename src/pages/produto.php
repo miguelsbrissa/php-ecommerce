@@ -16,12 +16,31 @@
 <body>
     <?php include '../components/nav.php'; ?>
     <?php
+    //por enquanto esta estatico enquanto nao utilizo sessao ou cookies
+    $pedido_id = $_ENV['PEDIDO'];
+    $cliente_cpf = $_ENV['CPF'];
+
     if (isset($_GET['produto'])) {
         $prod_name =  $_GET['produto'];
         $sql = "SELECT * FROM produto WHERE nome = '$prod_name'";
         $result = mysqli_query($conn, $sql);
         $produto = mysqli_fetch_all($result, MYSQLI_ASSOC);
         $produto = array_pop($produto);
+    }
+    if (isset($_POST['add'])) {
+        if (empty($_POST['qtd'])) {
+            echo 'Por favor selecione uma quantidade antes de adicionar à sacola!';
+        } else {
+            $prod_qtd =  (int)$_POST['qtd'];
+            $prod_id =  $produto['id'];
+            try {
+                $sql = "INSERT INTO itens_pedido VALUES($prod_qtd, $prod_id, $pedido_id)";
+                $result = mysqli_query($conn, $sql);
+                echo 'Item adicionado à sacola!';
+            } catch (Exception $error) {
+                echo 'Erro ao adicionar produto à sacola: ' . $error;
+            }
+        }
     }
     ?>
     <div class="content">
@@ -34,14 +53,16 @@
                 <div class="descricao">
                     <?php echo $produto['descricao'] ?>
                 </div>
-                <div class="quantidade">
-                    <div class="input-qtd">
-                        <label for="">Quantidade: </label>
-                        <input type="number" name="quantidade" id="" min="1" max="100">
+                <form action="" method="POST">
+                    <div class="quantidade">
+                        <div class="input-qtd">
+                            <label for="">Quantidade: </label>
+                            <input type="number" name="qtd" id="qtd" min="1" max="100">
+                        </div>
+                        <p>R$<?php echo str_replace('.', ',', $produto['preco']); ?></p>
                     </div>
-                    <p><?php echo $produto['preco'] ?></p>
-                </div>
-                <input type="button" value="Comprar" class="btn-comprar">
+                    <input type="submit" value="Adicionar à sacola" name="add" class="btn-comprar">
+                </form>
                 <div class="cep">
                     <div class="input-cep">
                         <label for="">CEP: </label>
