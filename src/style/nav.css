@@ -95,4 +95,5 @@ a {
     font-weight: 500;
     color: #9fc131;
     width: 50%;
+    cursor: default;
 }

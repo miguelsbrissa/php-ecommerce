@@ -66,7 +66,7 @@
             </div>
             <div class="input-field">
                 <input class="input-btn" type="submit" value="Login" name="login">
-                <a href="#" class="help">Não possui cadastro?</a>
+                <a href="http://localhost/php-ecommerce/src/pages/cadCliente.php" class="help">Não possui cadastro?</a>
             </div>
         </form>
     </div>
