@@ -31,6 +31,10 @@
     font-size: 1rem;
     color: #042940;
     font-weight: 600;
+    padding-bottom: 0.5rem;
+}
+.input::placeholder{
+    color: #04294093;
 }
 label{
     color: #042940;
@@ -45,6 +49,7 @@ label{
     border-radius: 20px;
     background-color: #042940;
     padding: 10px;
+    cursor: pointer;
 }
 h1{
     text-align: center;

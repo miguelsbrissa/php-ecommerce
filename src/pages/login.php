@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -13,16 +13,42 @@
 </head>
 
 <body>
+    <?php
+    $email = $senha = '';
+    if (isset($_POST['login'])) {
+        if (empty($_POST['email'])) {
+            echo 'Digite o email';
+        } else {
+            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        }
+
+        if (empty($_POST['senha'])) {
+            echo 'Digite a senha!';
+        } else {
+            $senha = filter_input(
+                INPUT_POST,
+                'senha',
+                FILTER_SANITIZE_FULL_SPECIAL_CHARS
+            );
+        }
+
+        if($email==='miguel@email.com' && $senha === '123'){
+            //faz login
+        }else{
+            echo 'Email e/ou senha incorreto(s)!';
+        }
+    }
+    ?>
     <div class="content">
         <form class="login" method="post">
             <h1>Login</h1>
             <div class="input-field">
                 <label for="">Email</label>
-                <input class="input" type="email" name="email" id="">
+                <input class="input" type="email" name="email" id="" placeholder="Digite seu email">
             </div>
             <div class="input-field">
                 <label for="">Senha</label>
-                <input class="input" type="password" name="senha" id="">
+                <input class="input" type="password" name="senha" id="" placeholder="***">
                 <a href="#" class="help">Esqueceu a senha?</a>
             </div>
             <div class="input-field">
