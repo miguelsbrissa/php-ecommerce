@@ -32,9 +32,12 @@
             );
         }
 
-        if($email==='miguel@email.com' && $senha === '123'){
-            //faz login
-        }else{
+        if ($email === 'miguel@email.com' && $senha === '123') {
+            $cookie_name = "user_email";
+            $cookie_value = $email;
+            setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); //dura um dia
+            header('Location: http://localhost/php-ecommerce/src/pages/index.php');
+        } else {
             echo 'Email e/ou senha incorreto(s)!';
         }
     }

@@ -1,5 +1,9 @@
 <?php include '../database/connection.php' ?>
 <?php
+include '../Auth/Auth.php';
+getSession();
+?>
+<?php
 $sql = "SELECT * FROM categoria";
 $result = mysqli_query($conn, $sql);
 $categorias = mysqli_fetch_all($result, MYSQLI_ASSOC);
