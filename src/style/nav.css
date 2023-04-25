@@ -48,7 +48,7 @@ a {
     display: flex;
     padding: 0 1rem;
 }
-.bag {
+.icon {
     font-size: 2rem;
     padding: 0 1rem;
 }
@@ -82,4 +82,17 @@ a {
 .dropdown-item:hover {
     text-decoration: underline #042940;
     transition: text-decoration 0.5s ease-in-out;
+}
+.info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.cliente{
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #9fc131;
+    width: 50%;
 }

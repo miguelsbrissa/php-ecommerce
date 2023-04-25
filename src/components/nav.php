@@ -1,12 +1,17 @@
 <?php include '../database/connection.php' ?>
 <?php
 include '../Auth/Auth.php';
-getSession();
+$cli_email = getSession();
 ?>
 <?php
 $sql = "SELECT * FROM categoria";
 $result = mysqli_query($conn, $sql);
 $categorias = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+$sql = "SELECT * FROM cliente WHERE email = '$cli_email'";
+$result = mysqli_query($conn, $sql);
+$cliente = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$cliente = array_pop($cliente);
 ?>
 <nav class="menu-nav">
     <ul>
@@ -34,6 +39,11 @@ $categorias = mysqli_fetch_all($result, MYSQLI_ASSOC);
         </ul>
     </div>
     <ul>
-        <a href="http://localhost/php-ecommerce/src/pages/finalPedido.php" class="menu-nav-item bag"><i class="fa-solid fa-bag-shopping"></i></a>
+        <div class="info">
+            <p class="cliente"><?php echo $cliente['nome']; ?></p>
+            <a href="http://localhost/php-ecommerce/src/pages/finalPedido.php" class="menu-nav-item icon"><i class="fa-solid fa-bag-shopping"></i></a>
+            <a href="http://localhost/php-ecommerce/src/pages/login.php" class="menu-nav-item icon"><i class="fa-solid fa-right-from-bracket"></i></i></a>
+        </div>
+
     </ul>
 </nav>

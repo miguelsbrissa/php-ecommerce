@@ -14,6 +14,10 @@
 
 <body>
     <?php
+    //faz logout antes de tudo caso o cliene tenha sido redireciona pra ca por ter feito logout
+    include '../Auth/Auth.php';
+    logout();
+
     $email = $senha = '';
     if (isset($_POST['login'])) {
         if (empty($_POST['email'])) {
@@ -33,10 +37,7 @@
         }
 
         if ($email === 'miguel@email.com' && $senha === '123') {
-            $cookie_name = "user_email";
-            $cookie_value = $email;
-            setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); //dura um dia
-            header('Location: http://localhost/php-ecommerce/src/pages/index.php');
+           login($email);
         } else {
             echo 'Email e/ou senha incorreto(s)!';
         }
