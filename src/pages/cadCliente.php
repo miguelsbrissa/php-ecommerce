@@ -75,7 +75,7 @@
             <h1>Cadastro</h1>
             <div class="input-field">
                 <label for="">CPF</label>
-                <input class="input" type="text" name="cpf" id="" placeholder="Digite seu CPF">
+                <input class="input" type="text" name="cpf" id="cpf" placeholder="Digite seu CPF" onkeydown="cpfFormatter()" maxlength="14">
             </div>
             <div class="input-field">
                 <label for="">Nome</label>
@@ -99,5 +99,24 @@
         </form>
     </div>
 </body>
+<script>
+    function formatCpf(value) {
+        if (!value) return value
+
+        const cpf = value.replace(/[^\d]/g, '') //retira tudo que nao for digito do input
+        const cpfLength = cpf.length
+
+        if (cpfLength < 4) return cpf //se tiver so 3 ou menos retorna so os numeros: 123
+        if (cpfLength < 7) return `${cpf.slice(0,3)}.${cpf.slice(3)}` //se tiver entre 3 e 6 coloca o ponto: 123.456
+        if (cpfLength < 10) return `${cpf.slice(0,3)}.${cpf.slice(3,6)}.${cpf.slice(6)}` //se tiver entre 6 e 9 coloca os dois pontos: 123.456.789
+        return `${cpf.slice(0,3)}.${cpf.slice(3,6)}.${cpf.slice(6, 9)}-${cpf.slice(9)}` //se tiver entre 10 e 11 coloca o traço: 123.456.789-10
+    }
+
+    function cpfFormatter() {
+        const cpfInput = document.getElementById('cpf')
+        const cpfFormatted = formatCpf(cpfInput.value)
+        cpfInput.value = cpfFormatted
+    }
+</script>
 
 </html>
