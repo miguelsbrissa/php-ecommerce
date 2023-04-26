@@ -16,21 +16,18 @@
 <body>
     <?php include '../components/nav.php'; ?>
     <?php include '../controller/produtoController.php'; ?>
+    <?php include '../controller/pedidoController.php'; ?>
     <?php
     if (isset($_GET['produto'])) {
         $prod_name =  $_GET['produto'];
         $produto = findProdutoByNameController($prod_name, $conn);
     }
 
-    $cliente_cpf = $cliente['cpf'];
-
-    $sql = "SELECT * FROM pedido WHERE cliente_cpf = '$cliente_cpf' AND status_pedido = 'ABERTO';";
-    $result = $result = mysqli_query($conn, $sql);
-    $pedido = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    $pedido = array_pop($pedido);
+    $clienteCpf = $cliente['cpf'];
+    $pedido = findPedidoByClienteController($clienteCpf, 'ABERTO', $conn);
     //se tiver um pedido já aberto o item será add nesse pedido
     if (!empty($pedido)) {
-        $pedido_id = $pedido['idPedido'];
+        $pedidoId = $pedido['idPedido'];
     }
 
     if (isset($_POST['add'])) {
@@ -39,21 +36,16 @@
         } else {
             //se não tiver um pedido já aberto será criado um novo pedido para o item ser adicionado
             if (empty($pedido)) {
-                $data_pedido = date('Y-m-d h:i:s');
-                $sql = "INSERT INTO pedido VALUES(NULL, 0, '$data_pedido', 'ABERTO', '$cliente_cpf')";
-                $result = mysqli_query($conn, $sql);
+                $dataPedido = date('Y-m-d h:i:s');
+                createPedidoController(0, $dataPedido, 'ABERTO', $clienteCpf, $conn);
 
-                $sql = "SELECT * FROM pedido WHERE cliente_cpf = '$cliente_cpf' AND status_pedido = 'ABERTO';";
-                $result = $result = mysqli_query($conn, $sql);
-                $pedido = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                $pedido = array_pop($pedido);
-                $pedido_id = $pedido['idPedido'];
+                $pedido = $pedido = findPedidoByClienteController($clienteCpf, 'ABERTO', $conn);
+                $pedidoId = $pedido['idPedido'];
             }
-            $prod_qtd =  (int)$_POST['qtd'];
-            $prod_id =  $produto['idProduto'];
+            $prodQtd =  (int)$_POST['qtd'];
+            $prodId =  $produto['idProduto'];
             try {
-                $sql = "INSERT INTO itens_pedido VALUES(NULL, $prod_qtd, $prod_id, $pedido_id)";
-                $result = mysqli_query($conn, $sql);
+                createItemPedidoController($prodQtd, $prodId, $pedidoId, $conn);
                 echo 'Item adicionado à sacola!';
             } catch (Exception $error) {
                 echo 'Erro ao adicionar produto à sacola: ' . $error;

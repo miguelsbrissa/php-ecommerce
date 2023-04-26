@@ -10,6 +10,15 @@ function createProdutoController($nome, $preco, $categoriaId, $img, $descricao, 
     }
 }
 
+function findProdutoByIdController($id, $conn)
+{
+    $produto = findProdutoByIdDB($id, $conn);
+    if ($produto) {
+        return $produto;
+    } else {
+        return 'Produto não encontrado';
+    }
+}
 function findProdutoByNameController($name, $conn)
 {
     $produto = findProdutoByNameDB($name, $conn);

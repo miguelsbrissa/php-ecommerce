@@ -7,6 +7,15 @@ function createProdutoDB($nome, $preco, $categoriaId, $img, $descricao, $conn)
     return $result;
 }
 
+function findProdutoByIdDB($id, $conn)
+{
+    $sql = "SELECT * FROM produto WHERE idProduto = '$id'";
+    $result = mysqli_query($conn, $sql);
+    $produto = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $produto = array_pop($produto);
+
+    return $produto;
+}
 function findProdutoByNameDB($name, $conn)
 {
     $sql = "SELECT * FROM produto WHERE nome = '$name'";
@@ -26,7 +35,7 @@ function findProdutoByCategoriaDB($catName, $conn)
     $catId = $categoria[0]['idCategoria'];
     $sql = "SELECT * FROM produto WHERE categoria_id = $catId";
     $result = mysqli_query($conn, $sql);
-    $produtos_by_cat = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $produtosByCat = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-    return $produtos_by_cat;
+    return $produtosByCat;
 }

@@ -15,26 +15,20 @@
 
 <body>
     <?php include '../components/nav.php'; ?>
+    <?php include '../controller/pedidoController.php'; ?>
+    <?php include '../controller/produtoController.php'; ?>
     <?php
-    $cliente_cpf = $cliente['cpf'];
-    $sql = "SELECT * FROM pedido WHERE cliente_cpf = '$cliente_cpf' AND status_pedido = 'ABERTO';";
-    $result = $result = mysqli_query($conn, $sql);
-    $pedido = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    $pedido = array_pop($pedido);
+    $clienteCpf = $cliente['cpf'];
+    $pedido = findPedidoByClienteController($clienteCpf, 'ABERTO', $conn);
     $valor_total = 0;
 
     if (!empty($pedido)) {
-        $pedido_id = $pedido['idPedido'];
-        $sql = "SELECT * FROM itens_pedido WHERE pedido_id = $pedido_id";
-        $result = mysqli_query($conn, $sql);
-        $itens = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $pedidoId = $pedido['idPedido'];
+        $itens = findItemPedidoByPedidoIdController($pedidoId, $conn);
         $itens_card = [];
         foreach ($itens as $item) {
-            $prod_id = $item['produto_id'];
-            $sql = "SELECT * FROM produto WHERE idProduto = $prod_id";
-            $result = mysqli_query($conn, $sql);
-            $info_prod = mysqli_fetch_all($result, MYSQLI_ASSOC);
-            $info_prod = array_pop($info_prod);
+            $prodId = $item['produto_id'];
+            $info_prod = findProdutoByIdController($prodId, $conn);
             $info_prod['qtd'] = $item['quantidade'];
             $info_prod['idItem'] = $item['idItem'];
             $valor_total += $item['quantidade'] * $info_prod['preco'];
@@ -43,24 +37,20 @@
     }
 
     if (isset($_POST['finalizar'])) {
-        $sql = "UPDATE pedido SET status_pedido ='FECHADO', valor='$valor_total' WHERE id = '$pedido_id'";
-        $result = mysqli_query($conn, $sql);
+        updatePedidoByIdController($valor_total, 'FECHADO', $pedidoId, $conn);
         echo 'Pedido finalizado';
         header("Refresh:2");
     }
-    
+
     if (isset($_GET['del_item'])) {
-        $item_id = $_GET['del_item'];
-        $sql = "DELETE FROM itens_pedido WHERE idItem = '$item_id'";
-        $result = mysqli_query($conn, $sql);
+        $itemId = $_GET['del_item'];
+        deleteItemPedidoByIdController($itemId, $conn);
         echo 'Item excluido ' . $item_id;
 
-        $sql = "SELECT * FROM itens_pedido WHERE pedido_id = $pedido_id";
-        $result = mysqli_query($conn, $sql);
-        $itens = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $itens = findItemPedidoByPedidoIdController($pedidoId, $conn);
         if (empty($itens)) {
-            $sql = "DELETE FROM pedido WHERE idPedido = '$pedido_id'";
-            $result = mysqli_query($conn, $sql);
+
+            deletePedidoByIdController($pedidoId, $conn);
         }
 
         header("Location: http://localhost/php-ecommerce/src/pages/finalPedido.php");
