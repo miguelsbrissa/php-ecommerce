@@ -32,7 +32,7 @@
     $pedido = array_pop($pedido);
     //se tiver um pedido já aberto o item será add nesse pedido
     if (!empty($pedido)) {
-        $pedido_id = $pedido['id'];
+        $pedido_id = $pedido['idPedido'];
     }
 
     if (isset($_POST['add'])) {
@@ -49,10 +49,10 @@
                 $result = $result = mysqli_query($conn, $sql);
                 $pedido = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 $pedido = array_pop($pedido);
-                $pedido_id = $pedido['id'];
+                $pedido_id = $pedido['idPedido'];
             }
             $prod_qtd =  (int)$_POST['qtd'];
-            $prod_id =  $produto['id'];
+            $prod_id =  $produto['idProduto'];
             try {
                 $sql = "INSERT INTO itens_pedido VALUES(NULL, $prod_qtd, $prod_id, $pedido_id)";
                 $result = mysqli_query($conn, $sql);

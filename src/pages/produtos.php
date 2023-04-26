@@ -18,11 +18,11 @@
     <?php
     if (isset($_GET['categoria'])) {
         $cat_name =  $_GET['categoria'];
-        $sql = "SELECT id FROM categoria WHERE nome = '$cat_name'";
+        $sql = "SELECT idCategoria FROM categoria WHERE nome = '$cat_name'";
         $result = mysqli_query($conn, $sql);
         $categoria = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-        $cat_id = $categoria[0]['id'];
+        $cat_id = $categoria[0]['idCategoria'];
         $sql = "SELECT * FROM produto WHERE categoria_id = $cat_id";
         $result = mysqli_query($conn, $sql);
         $produtos_by_cat = mysqli_fetch_all($result, MYSQLI_ASSOC);

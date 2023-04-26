@@ -24,18 +24,19 @@
     $valor_total = 0;
 
     if (!empty($pedido)) {
-        $pedido_id = $pedido['id'];
+        $pedido_id = $pedido['idPedido'];
         $sql = "SELECT * FROM itens_pedido WHERE pedido_id = $pedido_id";
         $result = mysqli_query($conn, $sql);
         $itens = mysqli_fetch_all($result, MYSQLI_ASSOC);
         $itens_card = [];
         foreach ($itens as $item) {
             $prod_id = $item['produto_id'];
-            $sql = "SELECT * FROM produto WHERE id = $prod_id";
+            $sql = "SELECT * FROM produto WHERE idProduto = $prod_id";
             $result = mysqli_query($conn, $sql);
             $info_prod = mysqli_fetch_all($result, MYSQLI_ASSOC);
             $info_prod = array_pop($info_prod);
             $info_prod['qtd'] = $item['quantidade'];
+            $info_prod['idItem'] = $item['idItem'];
             $valor_total += $item['quantidade'] * $info_prod['preco'];
             array_push($itens_card, $info_prod);
         }
@@ -46,6 +47,14 @@
         $result = mysqli_query($conn, $sql);
         echo 'Pedido finalizado';
         header("Refresh:2");
+    }
+
+    if (isset($_GET['del_item'])) {
+        $item_id = $_GET['del_item'];
+        $sql = "DELETE FROM itens_pedido WHERE idItem = '$item_id'";
+        $result = mysqli_query($conn, $sql);
+        echo 'Item excluido ' . $item_id;
+        header("Location: http://localhost/php-ecommerce/src/pages/finalPedido.php");
     }
     ?>
     <div class="content">
@@ -62,8 +71,8 @@
                             <h1 class="text">Valor: R$<?php echo str_replace('.', ',', $item['preco'] * $item['qtd']) ?></h1>
                         </div>
                         <div class="options">
-                            <i class="fa-solid fa-pencil"></i>
-                            <i class="fa-solid fa-trash"></i>
+                            <a href="http://localhost/php-ecommerce/src/pages/finalPedido.php?edit_item=<?php echo $item['idItem'] ?>"><i class="fa-solid fa-pencil icon"></i></a>
+                            <a href="http://localhost/php-ecommerce/src/pages/finalPedido.php?del_item=<?php echo $item['idItem'] ?>"><i class="fa-solid fa-trash icon"></i></a>
                         </div>
                     </div>
                 <?php endforeach; ?>
