@@ -16,10 +16,23 @@
 <body>
     <?php include '../components/nav.php'; ?>
     <?php
-    //por enquanto esta estatico enquanto nao utilizo sessao ou cookies
-    $pedido_id = $_ENV['PEDIDO'];
-    $cliente_cpf = $_ENV['CPF'];
+    $cliente_cpf = $cliente['cpf'];
 
+    $sql = "SELECT * FROM pedido WHERE cliente_cpf = '$cliente_cpf' AND status_pedido = 'ABERTO';";
+    $result = $result = mysqli_query($conn, $sql);
+    $pedido = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $pedido = array_pop($pedido);
+    if (empty($pedido)) {
+        $data_pedido = date('Y-m-d h:i:s');
+        $sql = "INSERT INTO pedido VALUES(NULL, 0, '$data_pedido', 'ABERTO', '$cliente_cpf')";
+        $result = mysqli_query($conn, $sql);
+    }
+    $sql = "SELECT * FROM pedido WHERE cliente_cpf = '$cliente_cpf' AND status_pedido = 'ABERTO';";
+    $result = $result = mysqli_query($conn, $sql);
+    $pedido = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $pedido = array_pop($pedido);
+    $pedido_id = $pedido['id'];
+    
     if (isset($_GET['produto'])) {
         $prod_name =  $_GET['produto'];
         $sql = "SELECT * FROM produto WHERE nome = '$prod_name'";
