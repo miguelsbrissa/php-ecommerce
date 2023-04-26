@@ -48,12 +48,21 @@
         echo 'Pedido finalizado';
         header("Refresh:2");
     }
-
+    
     if (isset($_GET['del_item'])) {
         $item_id = $_GET['del_item'];
         $sql = "DELETE FROM itens_pedido WHERE idItem = '$item_id'";
         $result = mysqli_query($conn, $sql);
         echo 'Item excluido ' . $item_id;
+
+        $sql = "SELECT * FROM itens_pedido WHERE pedido_id = $pedido_id";
+        $result = mysqli_query($conn, $sql);
+        $itens = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        if (empty($itens)) {
+            $sql = "DELETE FROM pedido WHERE idPedido = '$pedido_id'";
+            $result = mysqli_query($conn, $sql);
+        }
+
         header("Location: http://localhost/php-ecommerce/src/pages/finalPedido.php");
     }
     ?>
