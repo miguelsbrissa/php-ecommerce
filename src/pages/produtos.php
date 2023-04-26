@@ -15,17 +15,11 @@
 
 <body>
     <?php include '../components/nav.php'; ?>
+    <?php include '../controller/produtoController.php'; ?>
     <?php
     if (isset($_GET['categoria'])) {
-        $cat_name =  $_GET['categoria'];
-        $sql = "SELECT idCategoria FROM categoria WHERE nome = '$cat_name'";
-        $result = mysqli_query($conn, $sql);
-        $categoria = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-        $cat_id = $categoria[0]['idCategoria'];
-        $sql = "SELECT * FROM produto WHERE categoria_id = $cat_id";
-        $result = mysqli_query($conn, $sql);
-        $produtos_by_cat = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $catName =  $_GET['categoria'];
+        $produtosByCat = findProdutoByCategoriaDB($catName, $conn);
     }
     ?>
     <div class="content">
@@ -41,10 +35,10 @@
             </div>
         </div>
         <div class="cards">
-            <?php if (empty($produtos_by_cat)) : ?>
+            <?php if (empty($produtosByCat)) : ?>
                 <h1 class="erro">Não existem produtos nessa categoria ainda! </h1>
             <?php endif; ?>
-            <?php foreach ($produtos_by_cat as $produto) : ?>
+            <?php foreach ($produtosByCat as $produto) : ?>
                 <div class="cards item">
                     <img src="../images/<?php echo $produto['img'] ?>" alt="Apple" class="img" />
                     <h1 class="item-name"><?php echo $produto['nome'] ?></h1>

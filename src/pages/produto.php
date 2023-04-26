@@ -15,13 +15,11 @@
 
 <body>
     <?php include '../components/nav.php'; ?>
+    <?php include '../controller/produtoController.php'; ?>
     <?php
     if (isset($_GET['produto'])) {
         $prod_name =  $_GET['produto'];
-        $sql = "SELECT * FROM produto WHERE nome = '$prod_name'";
-        $result = mysqli_query($conn, $sql);
-        $produto = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        $produto = array_pop($produto);
+        $produto = findProdutoByNameController($prod_name, $conn);
     }
 
     $cliente_cpf = $cliente['cpf'];
