@@ -15,6 +15,7 @@
 <body>
     <?php
     include '../database/connection.php';
+    include '../controller/clienteController.php';
 
     $input_nome = $input_cpf = $input_data = $input_email = $input_senha = '';
 
@@ -62,8 +63,7 @@
         }
 
         try {
-            $sql = "INSERT INTO cliente VALUES ('$input_cpf','$input_nome','$input_email','$input_senha', '$input_data')";
-            $result = mysqli_query($conn, $sql);
+            createClienteController($input_cpf,$input_nome,$input_email,$input_senha, $input_data, $conn);
             header('Location: http://localhost/php-ecommerce/src/pages/login.php');
         } catch (Exception $error) {
             echo 'Erro ao cadastrar cliente: ' . $error;
