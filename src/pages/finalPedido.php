@@ -21,13 +21,13 @@
     $result = $result = mysqli_query($conn, $sql);
     $pedido = mysqli_fetch_all($result, MYSQLI_ASSOC);
     $pedido = array_pop($pedido);
+    $valor_total = 0;
 
     if (!empty($pedido)) {
         $pedido_id = $pedido['id'];
         $sql = "SELECT * FROM itens_pedido WHERE pedido_id = $pedido_id";
         $result = mysqli_query($conn, $sql);
         $itens = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        $valor_total = 0;
         $itens_card = [];
         foreach ($itens as $item) {
             $prod_id = $item['produto_id'];
@@ -41,6 +41,12 @@
         }
     }
 
+    if (isset($_POST['finalizar'])) {
+        $sql = "UPDATE pedido SET status_pedido ='FECHADO', valor='$valor_total' WHERE id = '$pedido_id'";
+        $result = mysqli_query($conn, $sql);
+        echo 'Pedido finalizado';
+        header("Refresh:2");
+    }
     ?>
     <div class="content">
         <div class="cards">
@@ -60,11 +66,11 @@
                             <i class="fa-solid fa-trash"></i>
                         </div>
                     </div>
-                    <div class="finalizar">
-                        <h1 class="text">Valor total:R$<?php echo str_replace('.', ',', $valor_total) ?> </h1>
-                        <input type="submit" value="Finalizar compra" name="finalizar" class="btn-finalizar">
-                    </div>
                 <?php endforeach; ?>
+                <form class="finalizar" method="post">
+                    <h1 class="text">Valor total:R$<?php echo str_replace('.', ',', $valor_total) ?> </h1>
+                    <input type="submit" value="Finalizar compra" name="finalizar" class="btn-finalizar">
+                </form>
             <?php else : ?>
                 <h1 class="erro">Sem produtos no carrinho!</h1>
             <?php endif; ?>
