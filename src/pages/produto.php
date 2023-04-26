@@ -16,23 +16,6 @@
 <body>
     <?php include '../components/nav.php'; ?>
     <?php
-    $cliente_cpf = $cliente['cpf'];
-
-    $sql = "SELECT * FROM pedido WHERE cliente_cpf = '$cliente_cpf' AND status_pedido = 'ABERTO';";
-    $result = $result = mysqli_query($conn, $sql);
-    $pedido = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    $pedido = array_pop($pedido);
-    if (empty($pedido)) {
-        $data_pedido = date('Y-m-d h:i:s');
-        $sql = "INSERT INTO pedido VALUES(NULL, 0, '$data_pedido', 'ABERTO', '$cliente_cpf')";
-        $result = mysqli_query($conn, $sql);
-    }
-    $sql = "SELECT * FROM pedido WHERE cliente_cpf = '$cliente_cpf' AND status_pedido = 'ABERTO';";
-    $result = $result = mysqli_query($conn, $sql);
-    $pedido = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    $pedido = array_pop($pedido);
-    $pedido_id = $pedido['id'];
-    
     if (isset($_GET['produto'])) {
         $prod_name =  $_GET['produto'];
         $sql = "SELECT * FROM produto WHERE nome = '$prod_name'";
@@ -40,10 +23,34 @@
         $produto = mysqli_fetch_all($result, MYSQLI_ASSOC);
         $produto = array_pop($produto);
     }
+
+    $cliente_cpf = $cliente['cpf'];
+
+    $sql = "SELECT * FROM pedido WHERE cliente_cpf = '$cliente_cpf' AND status_pedido = 'ABERTO';";
+    $result = $result = mysqli_query($conn, $sql);
+    $pedido = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $pedido = array_pop($pedido);
+    //se tiver um pedido já aberto o item será add nesse pedido
+    if (!empty($pedido)) {
+        $pedido_id = $pedido['id'];
+    }
+
     if (isset($_POST['add'])) {
         if (empty($_POST['qtd'])) {
             echo 'Por favor selecione uma quantidade antes de adicionar à sacola!';
         } else {
+            //se não tiver um pedido já aberto será criado um novo pedido para o item ser adicionado
+            if (empty($pedido)) {
+                $data_pedido = date('Y-m-d h:i:s');
+                $sql = "INSERT INTO pedido VALUES(NULL, 0, '$data_pedido', 'ABERTO', '$cliente_cpf')";
+                $result = mysqli_query($conn, $sql);
+
+                $sql = "SELECT * FROM pedido WHERE cliente_cpf = '$cliente_cpf' AND status_pedido = 'ABERTO';";
+                $result = $result = mysqli_query($conn, $sql);
+                $pedido = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                $pedido = array_pop($pedido);
+                $pedido_id = $pedido['id'];
+            }
             $prod_qtd =  (int)$_POST['qtd'];
             $prod_id =  $produto['id'];
             try {
