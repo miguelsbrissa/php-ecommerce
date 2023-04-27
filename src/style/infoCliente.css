@@ -1,0 +1,84 @@
+.content{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.on{
+    display: flex;
+}
+.off{
+    display: none;
+}
+.sideNav{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #042940;
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 1rem;
+}
+.sideNav input{
+    cursor: pointer;
+    margin: 1rem;
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #9fc131;
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+.sideNav input:hover{
+    text-decoration: solid underline #9fc131;
+}
+.option{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    width: 70%
+}
+.icon{
+    color: #9fc131;
+}
+.info-dados{
+    border-radius: 20px;
+    background-color: #042940;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    margin: 1rem;
+}
+.input-field{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 1rem;
+}
+.input{
+    outline: none;
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #9fc131;
+    border: none;
+    border-bottom: 2px solid #9fc131;
+    background-color: transparent;
+}
+label{
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #9fc131;
+    margin: 0 1rem;
+}
