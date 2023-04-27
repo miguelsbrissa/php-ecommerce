@@ -87,7 +87,7 @@
                 </div>
                 <div class="input-field">
                     <label for="">CEP:</label>
-                    <input class="input" type="text" name="rua" id="" value="01001-01">
+                    <input class="input" type="text" name="cep" id="" value="01001-01">
                 </div>
                 <input class="input-add" type="submit" value="Cadastrar endereço">
                 <div class="lista">
@@ -95,7 +95,28 @@
                 </div>
             </div>
             <div class="info-dados off" id="dados-pagamento">
-                pagamento
+                <div class="input-field">
+                    <label for="tipo_cartao">Débito</label>
+                    <input type="radio" name="tipo_cartao" id="debito" value="debito">
+                    <label for="tipo_cartao">Crédito</label>
+                    <input type="radio" name="tipo_cartao" id="credito" value="credito">
+                </div>
+                <div class="input-field">
+                    <label for="">Número:</label>
+                    <input class="input" type="text" name="numero" id="" value="1234 5678 9010 1112">
+                </div>
+                <div class="input-field">
+                    <label for="">Nome titula:</label>
+                    <input class="input" type="text" name="nome_titular" id="" value="Miguel Sbrissa">
+                </div>
+                <div class="input-field">
+                    <label for="">Data validade:</label>
+                    <input class="input" type="text" name="data_validade" id="" value="11/25">
+                </div>
+                <input class="input-add" type="submit" value="Cadastrar endereço">
+                <div class="lista">
+                    Formas de pagamento cadastrados...
+                </div>
             </div>
             <div class="info-dados off" id="dados-compra">
                 compras
