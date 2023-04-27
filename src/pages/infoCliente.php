@@ -29,7 +29,7 @@
             <ul>
                 <div class="option">
                     <i class="fa-solid fa-location-dot icon"></i>
-                    <input type="button" value="Endereçoes" onclick="switchContent('endereco')">
+                    <input type="button" value="Endereços" onclick="switchContent('endereco')">
                 </div>
             </ul>
             <ul>
@@ -69,7 +69,30 @@
                 </div>
             </div>
             <div class="info-dados off" id="dados-endereco">
-                
+                <div class="input-field">
+                    <label for="">Rua:</label>
+                    <input class="input" type="text" name="rua" id="" value="Eu, Robô">
+                </div>
+                <div class="input-field">
+                    <label for="">Numero:</label>
+                    <input class="input" type="number" name="numero" id="" value="1" min="1">
+                </div>
+                <div class="input-field">
+                    <label for="">Bairro:</label>
+                    <input class="input" type="text" name="bairro" id="" value="Asimov">
+                </div>
+                <div class="input-field">
+                    <label for="">Cidade:</label>
+                    <input class="input" type="text" name="cidade" id="" value="Ficção">
+                </div>
+                <div class="input-field">
+                    <label for="">CEP:</label>
+                    <input class="input" type="text" name="rua" id="" value="01001-01">
+                </div>
+                <input class="input-add" type="submit" value="Cadastrar endereço">
+                <div class="lista">
+                    Endereços cadastrados...
+                </div>
             </div>
             <div class="info-dados off" id="dados-pagamento">
                 pagamento
@@ -92,30 +115,54 @@
             case 'pessoal':
                 divDadosPessoais.classList.remove('off')
                 divDadosPessoais.classList.add('on')
+
+                divDadosEndereco.classList.remove('on')
                 divDadosEndereco.classList.add('off')
+
+                divDadosPagamento.classList.remove('on')
                 divDadosPagamento.classList.add('off')
+
+                divDadosCompras.classList.remove('on')
                 divDadosCompras.classList.add('off')
                 break;
             case 'endereco':
+                divDadosPessoais.classList.remove('on')
+                divDadosPessoais.classList.add('off')
+
                 divDadosEndereco.classList.remove('off')
                 divDadosEndereco.classList.add('on')
-                divDadosPessoais.classList.add('off')
+
+                divDadosPagamento.classList.remove('on')
                 divDadosPagamento.classList.add('off')
+
+                divDadosCompras.classList.remove('on')
                 divDadosCompras.classList.add('off')
                 break;
             case 'pagamento':
+                divDadosPessoais.classList.remove('on')
+                divDadosPessoais.classList.add('off')
+
+                divDadosEndereco.classList.remove('on')
+                divDadosEndereco.classList.add('off')
+
                 divDadosPagamento.classList.remove('off')
                 divDadosPagamento.classList.add('on')
-                divDadosEndereco.classList.add('off')
-                divDadosPessoais.classList.add('off')
-                divDadosPessoais.divDadosCompras.add('off')
+
+                divDadosCompras.classList.remove('on')
+                divDadosCompras.classList.add('off')
                 break;
             case 'compras':
+                divDadosPessoais.classList.remove('on')
+                divDadosPessoais.classList.add('off')
+
+                divDadosEndereco.classList.remove('on')
+                divDadosEndereco.classList.add('off')
+
+                divDadosPagamento.classList.remove('on')
+                divDadosPagamento.classList.add('off')
+
                 divDadosCompras.classList.remove('off')
                 divDadosCompras.classList.add('on')
-                divDadosEndereco.classList.add('off')
-                divDadosPessoais.classList.add('off')
-                divDadosPagamento.classList.add('off')
                 break;
         }
     }
