@@ -2,7 +2,7 @@
 
 function createPedidoDB($valor, $dataPedido, $statusPedido, $clienteCpf, $conn)
 {
-    $sql = "INSERT INTO pedido VALUES(NULL, $valor, '$dataPedido', '$statusPedido', '$clienteCpf')";
+    $sql = "INSERT INTO pedido VALUES(NULL, $valor, '$dataPedido', '$statusPedido', '$clienteCpf', NULL, NULL)";
     $result = mysqli_query($conn, $sql);
 
     return $result;
