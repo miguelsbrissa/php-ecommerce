@@ -42,11 +42,12 @@
     justify-content: center;
     width: 100%;
 }
-
 .info{
     display: flex;
     flex-direction: column;
-    width: 70%
+    align-items: center;
+    justify-content: center;
+    width: 50%;
 }
 .icon{
     color: #9fc131;
@@ -57,6 +58,7 @@
     flex-direction: column;
     padding: 2rem;
     margin: 1rem;
+    width: 100%;
 }
 .input-field{
     display: flex;
@@ -98,4 +100,20 @@ label{
 .input-add:hover{
     background-color: #0000003f;
     transition: all 0.5s ease-in-out;
+}
+.tabela-dados{
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    border-collapse: collapse;
+    width: 100%;
+}
+.tabela-dados td, .tabela-dados th{
+    border: 2px solid #9fc131;
+    padding: 1rem;
+}
+.tabela-dados th{
+    font-weight: 700;
+    color: #9fc131;
 }

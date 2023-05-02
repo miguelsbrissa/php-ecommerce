@@ -67,6 +67,7 @@
                     <label for="">Senha:</label>
                     <input class="input" type="password" name="senha" id="" value="123456">
                 </div>
+                <input class="input-add" type="submit" value="Atualizar cadastro">
             </div>
             <div class="info-dados off" id="dados-endereco">
                 <div class="input-field">
@@ -91,7 +92,22 @@
                 </div>
                 <input class="input-add" type="submit" value="Cadastrar endereço">
                 <div class="lista">
-                    Endereços cadastrados...
+                    <table class="tabela-dados" aria-label="">
+                        <tr>
+                            <th>Rua</th>
+                            <th>Número</th>
+                            <th>Bairro</th>
+                            <th>Cidade</th>
+                            <th>CEP</th>
+                        </tr>
+                        <tr>
+                            <td>Eu, Robô</td>
+                            <td>1</td>
+                            <td>Asimov</td>
+                            <td>Ficção</td>
+                            <td>01001-01</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <div class="info-dados off" id="dados-pagamento">
@@ -106,7 +122,7 @@
                     <input class="input" type="text" name="numero" id="" value="1234 5678 9010 1112">
                 </div>
                 <div class="input-field">
-                    <label for="">Nome titula:</label>
+                    <label for="">Nome titular:</label>
                     <input class="input" type="text" name="nome_titular" id="" value="Miguel Sbrissa">
                 </div>
                 <div class="input-field">
@@ -115,7 +131,20 @@
                 </div>
                 <input class="input-add" type="submit" value="Cadastrar endereço">
                 <div class="lista">
-                    Formas de pagamento cadastrados...
+                <table class="tabela-dados" aria-label="">
+                        <tr>
+                            <th>Tipo de cartão</th>
+                            <th>Número</th>
+                            <th>Nome do titular</th>
+                            <th>Data validade</th>
+                        </tr>
+                        <tr>
+                            <td>Débito</td>
+                            <td>1234 5678 9010 1112</td>
+                            <td>Miguel Sbrissa</td>
+                            <td>11/25</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <div class="info-dados off" id="dados-compra">
