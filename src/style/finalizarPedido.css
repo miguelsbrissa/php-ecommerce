@@ -1,0 +1,65 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin-bottom: 5rem;
+}
+h1{
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #042940;
+}
+.opcao{
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #042940;
+    margin: 1rem 0;
+}
+.lista{
+    padding: 2rem;
+    border: 2px solid #042940;
+    border-radius: 20px;
+    margin: 1rem 0;
+    width: 90%;
+}
+.link{
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #9fc131;
+    cursor: pointer;
+}
+.text{
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #042940;
+    margin: 3rem;
+}
+.finalizar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.btn-finalizar{
+    background-color: #042940;
+    width: 70%;
+    padding: 1rem;
+    color: #9fc131;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+}
+.btn-finalizar:hover {
+    color: #758d24;
+    transition: all 0.3s ease-in-out;
+}

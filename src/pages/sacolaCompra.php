@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/style.css">
-    <link rel="stylesheet" href="../style/finalPedido.css">
+    <link rel="stylesheet" href="../style/sacolaCompra.css">
     <link rel="stylesheet" href="../style/nav.css">
     <link rel="stylesheet" href="../style/footer.css">
     <script src="https://kit.fontawesome.com/f673a817b4.js" crossorigin="anonymous"></script>
@@ -36,10 +36,10 @@
         }
     }
 
-    if (isset($_POST['finalizar'])) {
-        updatePedidoByIdController($valor_total, 'FECHADO', $pedidoId, $conn);
+    if (isset($_POST['escolha'])) {
+        //updatePedidoByIdController($valor_total, 'FECHADO', $pedidoId, $conn); mudar para a prox pagina e colocar ID de endereco e pagamento
         echo 'Pedido finalizado';
-        header("Refresh:2");
+        header('Location: http://localhost/php-ecommerce/src/pages/finalizarPedido.php');
     }
 
     if (isset($_GET['del_item'])) {
@@ -77,7 +77,7 @@
                 <?php endforeach; ?>
                 <form class="finalizar" method="post">
                     <h1 class="text">Valor total:R$<?php echo str_replace('.', ',', $valor_total) ?> </h1>
-                    <input type="submit" value="Finalizar compra" name="finalizar" class="btn-finalizar">
+                    <input type="submit" value="Escolha endereco e o pagamento" name="escolha" class="btn-finalizar">
                 </form>
             <?php else : ?>
                 <h1 class="erro">Sem produtos no carrinho!</h1>
