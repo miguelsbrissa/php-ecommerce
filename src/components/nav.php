@@ -40,7 +40,7 @@ $cliente = array_pop($cliente);
     </div>
     <ul>
         <div class="info">
-            <a href="http://localhost/php-ecommerce/src/pages/infoCliente.php?cliente=<?php echo $cliente['nome']; ?>" class="menu-nav-item"><?php echo $cliente['nome']; ?></a>
+            <a href="http://localhost/php-ecommerce/src/pages/infoCliente.php" class="menu-nav-item"><?php echo $cliente['nome']; ?></a>
             <a href="http://localhost/php-ecommerce/src/pages/sacolaCompra.php" class="menu-nav-item icon"><i class="fa-solid fa-bag-shopping"></i></a>
             <a href="http://localhost/php-ecommerce/src/pages/login.php" class="menu-nav-item icon"><i class="fa-solid fa-right-from-bracket"></i></i></a>
         </div>

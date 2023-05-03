@@ -1,7 +1,7 @@
 <?php
 function createPagamentoDB($tipoCartao, $numero, $nomeTitular, $dataValidade, $clienteCpf, $conn)
 {
-    $sql = "INSERT INTO pagamento VALUES ('$tipoCartao','$numero','$nomeTitular','$dataValidade', '$clienteCpf')";
+    $sql = "INSERT INTO pagamento VALUES (NULL,'$tipoCartao','$numero','$nomeTitular','$dataValidade', '$clienteCpf')";
     $result = mysqli_query($conn, $sql);
 
     return $result;
