@@ -18,16 +18,14 @@
     <?php
     include '../controller/pedidoController.php';
     include '../controller/enderecoController.php';
+    include '../controller/pagamentoController.php';
 
     $clienteCpf = $cliente['cpf'];
     $pedido = findPedidoByClienteController($clienteCpf, 'ABERTO', $conn);
     $pedidoId = $pedido['idPedido'];
 
     $listaEnderecos = findEnderecosByClienteController($clienteCpf, $conn);
-    
-    $sql = "SELECT * FROM pagamento WHERE cpfCliente = '$clienteCpf'";
-    $result = mysqli_query($conn, $sql);
-    $listaPagamentos = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $listaPagamentos = findPagamentosByClienteController($clienteCpf, $conn);
 
     if (isset($_POST['finalizar'])) {
         if (isset($_POST['enderecos'])) {
