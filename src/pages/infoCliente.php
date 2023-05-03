@@ -23,6 +23,52 @@
     $cliente_nome = $cliente['nome'];
     $clienteCpf = $cliente['cpf'];
 
+    if (isset($_POST['updateCliente'])) {
+        if (empty($_POST['nome'])) {
+            echo 'Digite o nome!';
+        } else {
+            $input_nome = filter_input(
+                INPUT_POST,
+                'nome',
+                FILTER_SANITIZE_FULL_SPECIAL_CHARS
+            );
+        }
+        if (empty($_POST['data_nasc'])) {
+            echo 'Digite a data!';
+        } else {
+            $input_dataNasc = filter_input(
+                INPUT_POST,
+                'data_nasc',
+                FILTER_SANITIZE_FULL_SPECIAL_CHARS
+            );
+        }
+        if (empty($_POST['email'])) {
+            echo 'Digite o email!';
+        } else {
+            $input_email = filter_input(
+                INPUT_POST,
+                'email',
+                FILTER_SANITIZE_EMAIL
+            );
+        }
+        if (empty($_POST['senha'])) {
+            echo 'Digite a senha!';
+        } else {
+            $input_senha = filter_input(
+                INPUT_POST,
+                'senha',
+                FILTER_SANITIZE_FULL_SPECIAL_CHARS
+            );
+        }
+
+        try {
+            updatelienteByCpfController($input_cpf,$input_nome,$input_email,$input_senha, $input_dataNasc, $conn);
+            header('Refresh:3');
+        } catch (Exception $error) {
+            echo 'Erro ao atualizar os dados do cliente: ' . $error;
+        }
+    }
+
     if (isset($_POST['cadEndereco'])) {
         if (empty($_POST['rua'])) {
             echo 'Digite o nome da rua!';
@@ -77,7 +123,7 @@
         if (empty($_POST['tipo_cartao'])) {
             echo 'Escolha o tipo do cartão!';
         } else {
-            $input_tipoCartao= $_POST['tipo_cartao'];
+            $input_tipoCartao = $_POST['tipo_cartao'];
         }
         if (empty($_POST['numero'])) {
             echo 'Digite o nome da numero!';
@@ -146,27 +192,29 @@
         </div>
         <div class="info">
             <div class="info-dados on" id="dados-pessoais">
-                <div class="input-field">
-                    <label for="">CPF:</label>
-                    <input class="input" type="text" name="cpf" id="" value="123.456.789.10">
-                </div>
-                <div class="input-field">
-                    <label for="">Nome:</label>
-                    <input class="input" type="text" name="nome" id="" value="Miguel">
-                </div>
-                <div class="input-field">
-                    <label for="">Data de nascimento:</label>
-                    <input class="input" type="date" name="data_nasc" id="">
-                </div>
-                <div class="input-field">
-                    <label for="">Email:</label>
-                    <input class="input" type="email" name="email" id="" value="miguel@email.com">
-                </div>
-                <div class="input-field">
-                    <label for="">Senha:</label>
-                    <input class="input" type="password" name="senha" id="" value="123456">
-                </div>
-                <input class="input-add" type="submit" value="Atualizar cadastro">
+                <form action="" method="post">
+                    <div class="input-field">
+                        <label for="">CPF:</label>
+                        <input class="input" type="text" name="cpf" id="" value="<?php echo $cliente['cpf']; ?>" disabled>
+                    </div>
+                    <div class="input-field">
+                        <label for="">Nome:</label>
+                        <input class="input" type="text" name="nome" id="" value="<?php echo $cliente['nome']; ?>">
+                    </div>
+                    <div class="input-field">
+                        <label for="">Data de nascimento:</label>
+                        <input class="input" type="date" name="data_nasc" id="" value="<?php echo $cliente['data_nasc']; ?>">
+                    </div>
+                    <div class="input-field">
+                        <label for="">Email:</label>
+                        <input class="input" type="email" name="email" id="" value="<?php echo $cliente['email']; ?>">
+                    </div>
+                    <div class="input-field">
+                        <label for="">Senha:</label>
+                        <input class="input" type="password" name="senha" id="" value="<?php echo $cliente['senha']; ?>">
+                    </div>
+                    <input class="input-add" type="submit" value="Atualizar cadastro" name="updateCliente">
+                </form>
             </div>
             <div class="info-dados off" id="dados-endereco">
                 <form action="" method="post">

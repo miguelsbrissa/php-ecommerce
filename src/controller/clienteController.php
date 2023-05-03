@@ -11,10 +11,19 @@ function createClienteController($cpf, $nome, $email, $senha, $data, $conn)
 
 function findClienteByCpfController($cpf, $conn)
 {
-    $cliente = findClienteByCpf($cpf, $conn);
+    $cliente = findClienteByCpfDB($cpf, $conn);
     if ($cliente) {
         return $cliente;
     } else {
         return 'Cliente não encontrado';
+    }
+}
+
+function updatelienteByCpfController($cpf, $nome, $email, $senha, $data, $conn)
+{
+    if (updateClienteByCpfDB($cpf, $nome, $email, $senha, $data, $conn)) {
+        return 'Cliente atualizado com sucesso!';
+    } else {
+        return 'Erro ao cadastrar cliente!';
     }
 }
