@@ -28,9 +28,17 @@ function deletePedidoByIdController($pedidoId, $conn)
     }
 }
 
-function updatePedidoByIdController($valor, $status, $pedidoId, $conn)
+function finishPedidoByIdController($status, $pedidoId, $enderecoId, $pagamentoId, $conn)
 {
-    if (updatePedidoByIdBD($valor, $status, $pedidoId, $conn)) {
+    if (finishPedidoByIdBD($status, $pedidoId, $enderecoId, $pagamentoId, $conn)) {
+        return 'Pedido finalizado!';
+    } else {
+        return false;
+    }
+}
+function updateValorPedidoByIdController($valor, $pedidoId, $conn)
+{
+    if (updateValorPedidoByIdBD($valor, $pedidoId, $conn)) {
         return 'Pedido finalizado!';
     } else {
         return false;

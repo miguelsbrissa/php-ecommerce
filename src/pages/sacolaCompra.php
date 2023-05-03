@@ -37,7 +37,7 @@
     }
 
     if (isset($_POST['escolha'])) {
-        //updatePedidoByIdController($valor_total, 'FECHADO', $pedidoId, $conn); mudar para a prox pagina e colocar ID de endereco e pagamento
+        updateValorPedidoByIdController($valor_total, $pedidoId, $conn);
         echo 'Pedido finalizado';
         header('Location: http://localhost/php-ecommerce/src/pages/finalizarPedido.php');
     }

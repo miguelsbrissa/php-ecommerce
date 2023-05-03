@@ -15,34 +15,61 @@
 
 <body>
     <?php include '../components/nav.php'; ?>
+    <?php
+    include '../controller/pedidoController.php';
+
+    $clienteCpf = $cliente['cpf'];
+    $pedido = findPedidoByClienteController($clienteCpf, 'ABERTO', $conn);
+    $pedidoId = $pedido['idPedido'];
+
+    $sql = "SELECT * FROM endereco WHERE cpfCliente = '$clienteCpf'";
+    $result = mysqli_query($conn, $sql);
+    $listaEnderecos = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    $sql = "SELECT * FROM pagamento WHERE cpfCliente = '$clienteCpf'";
+    $result = mysqli_query($conn, $sql);
+    $listaPagamentos = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    if (isset($_POST['finalizar'])) {
+        if (isset($_POST['enderecos'])) {
+            $enderecoId = $_POST['enderecos'];
+        } else {
+            echo 'Por favor selecione um endereço!';
+        }
+        if (isset($_POST['pagamentos'])) {
+            $pagamentoId = $_POST['pagamentos'];
+        } else {
+            echo 'Por favor selecione uma forma pagamento!';
+        }
+        finishPedidoByIdController('FECHADO', $pedidoId, $enderecoId, $pagamentoId, $conn);
+    }
+    ?>
     <div class="content">
-        <div class="lista">
-            <h1>Escolha um endereco:</h1>
-            <div class="opcao">
-                <input type="radio" name="enderecos" id="endereco1" value="endereco1">
-                <label for="">Rua: Eu, Robô 1; Bairro: Asimov;Cidade: Asimov; CEP: 01001-01</label>
+        <form method="post">
+            <div class="lista">
+                <h1>Escolha um endereco:</h1>
+                <?php foreach ($listaEnderecos as $endereco) : ?>
+                    <div class="opcao">
+                        <input type="radio" name="enderecos" value="<?php echo $endereco['idEndereco'] ?>">
+                        <label for=""><?php echo 'Rua: ' . $endereco['rua'] . ' ' . $endereco['numero'] . '; ' . 'Bairro: ' . $endereco['bairro'] . '; ' . 'Cidade: ' . $endereco['cidade'] . '; ' . 'CEP: ' . $endereco['cep']; ?></label>
+                    </div>
+                <?php endforeach; ?>
+                <a class="link" href="http://localhost/php-ecommerce/src/pages/infoCliente.php?cliente=<?php echo $cliente['nome']; ?>">Adicione um novo endereço</a>
             </div>
-            <div class="opcao">
-                <input type="radio" name="enderecos" id="endereco2" value="endereco2">
-                <label for="">Rua: Eu, Robô 2; Bairro: Asimov;Cidade: Asimov; CEP: 01001-01</label>
+            <div class="lista">
+                <h1>Escolha o tipo de pagamento:</h1>
+                <?php foreach ($listaPagamentos as $pagamento) : ?>
+                    <div class="opcao">
+                        <input type="radio" name="pagamentos" value="<?php echo $pagamento['idPagamento'] ?>">
+                        <label for=""><?php echo $pagamento['tipoCartao'] . ': ' . $pagamento['numero'];?></label>
+                    </div>
+                <?php endforeach; ?>
+                <a class="link" href="http://localhost/php-ecommerce/src/pages/infoCliente.php?cliente=<?php echo $cliente['nome']; ?>">Adicione um novo meio de pagamento</a>
             </div>
-            <a class="link" href="http://localhost/php-ecommerce/src/pages/infoCliente.php?cliente=<?php echo $cliente['nome']; ?>">Adicione um novo endereço</a>
-        </div>
-        <div class="lista">
-            <h1>Escolha o tipo de pagamento:</h1>
-            <div class="opcao">
-                <input type="radio" name="pagamentos" id="pagamento1" value="pagamento1">
-                <label for="">Débito: 1234 5678 9010 1112</label>
+            <div class="finalizar">
+                <h1 class="text">Valor total:R$10,00 </h1>
+                <input type="submit" value="Finalizar compra" name="finalizar" class="btn-finalizar">
             </div>
-            <div class="opcao">
-                <input type="radio" name="pagamentos" id="pagamento2" value="pagamento2">
-                <label for="">Crédito: 1234 5678 9010 1112</label>
-            </div>
-            <a class="link" href="http://localhost/php-ecommerce/src/pages/infoCliente.php?cliente=<?php echo $cliente['nome']; ?>">Adicione um novo meio de pagamento</a>
-        </div>
-        <form class="finalizar" method="post">
-            <h1 class="text">Valor total:R$10,00 </h1>
-            <input type="submit" value="Finalizar compra" name="finalizar" class="btn-finalizar">
         </form>
     </div>
     <?php include '../components/footer.php'; ?>

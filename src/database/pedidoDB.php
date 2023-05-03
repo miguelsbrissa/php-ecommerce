@@ -26,9 +26,16 @@ function deletePedidoByIdDB($pedidoId, $conn)
     return $result;
 }
 
-function updatePedidoByIdBD($valor, $status, $pedidoId, $conn) //essa função finaliza o pedido então só é necassário att o status e o valor
+function finishPedidoByIdBD($status, $pedidoId, $enderecoId, $pagamentoId, $conn) //essa função finaliza o pedido então só é necassário att o status, o endereco e o pagamento
 {
-    $sql = "UPDATE pedido SET status_pedido ='$status', valor='$valor' WHERE idPedido = '$pedidoId'";
+    $sql = "UPDATE pedido SET status_pedido ='$status', idEndereco='$enderecoId', idPagamento='$pagamentoId' WHERE idPedido = '$pedidoId'";
+    $result = mysqli_query($conn, $sql);
+
+    return $result;
+}
+function updateValorPedidoByIdBD($valor, $pedidoId, $conn) //essa função finaliza o pedido então só é necassário att o status e o valor
+{
+    $sql = "UPDATE pedido SET valor ='$valor' WHERE idPedido = '$pedidoId'";
     $result = mysqli_query($conn, $sql);
 
     return $result;
