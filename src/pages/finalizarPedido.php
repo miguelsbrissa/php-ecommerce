@@ -17,15 +17,14 @@
     <?php include '../components/nav.php'; ?>
     <?php
     include '../controller/pedidoController.php';
+    include '../controller/enderecoController.php';
 
     $clienteCpf = $cliente['cpf'];
     $pedido = findPedidoByClienteController($clienteCpf, 'ABERTO', $conn);
     $pedidoId = $pedido['idPedido'];
 
-    $sql = "SELECT * FROM endereco WHERE cpfCliente = '$clienteCpf'";
-    $result = mysqli_query($conn, $sql);
-    $listaEnderecos = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
+    $listaEnderecos = findEnderecosByClienteController($clienteCpf, $conn);
+    
     $sql = "SELECT * FROM pagamento WHERE cpfCliente = '$clienteCpf'";
     $result = mysqli_query($conn, $sql);
     $listaPagamentos = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -42,6 +41,7 @@
             echo 'Por favor selecione uma forma pagamento!';
         }
         finishPedidoByIdController('FECHADO', $pedidoId, $enderecoId, $pagamentoId, $conn);
+        header('Location: http://localhost/php-ecommerce/src/pages/index.php');
     }
     ?>
     <div class="content">
