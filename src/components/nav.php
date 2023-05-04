@@ -1,17 +1,13 @@
 <?php include '../database/connection.php' ?>
 <?php
 include '../Auth/Auth.php';
-$cli_email = getSession();
-?>
-<?php
-$sql = "SELECT * FROM categoria";
-$result = mysqli_query($conn, $sql);
-$categorias = mysqli_fetch_all($result, MYSQLI_ASSOC);
+include '../controller/categoriaController.php';
+include '../controller/clienteController.php';
 
-$sql = "SELECT * FROM cliente WHERE email = '$cli_email'";
-$result = mysqli_query($conn, $sql);
-$cliente = mysqli_fetch_all($result, MYSQLI_ASSOC);
-$cliente = array_pop($cliente);
+$cli_email = getSession();
+
+$categorias = findAllCategoriaController($conn);
+$cliente = findClienteByEmailController($cli_email, $conn);
 ?>
 <nav class="menu-nav">
     <ul>
