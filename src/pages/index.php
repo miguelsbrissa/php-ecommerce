@@ -14,12 +14,11 @@
 </head>
 
 <body>
-    <?php include '../components/nav.php'; ?>
     <?php
-    $sql = "SELECT * FROM produto";
-    $result = mysqli_query($conn, $sql);
-    $produtos = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    include '../components/nav.php';
+    include '../controller/produtoController.php';
 
+    $produtos = findAllProdutoDB($conn);
     ?>
     <div class="content">
         <h1 class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
@@ -27,9 +26,9 @@
             <?php if (empty(!$produtos)) : ?>
                 <?php foreach ($produtos as $produto) : ?>
                     <div class="cards item">
-                        <img src="../images/<?php echo $produto['img']?>" alt="Apple" class="img" />
-                        <h1 class="item-name"><?php echo $produto['nome']?></h1>
-                        <a type="button" href="http://localhost/php-ecommerce/src/pages/produto.php?produto=<?php echo $produto['nome']?>" class="button-price">R$<?php echo str_replace('.', ',', $produto['preco']); ?></a>
+                        <img src="../images/<?php echo $produto['img'] ?>" alt="Apple" class="img" />
+                        <h1 class="item-name"><?php echo $produto['nome'] ?></h1>
+                        <a type="button" href="http://localhost/php-ecommerce/src/pages/produto.php?produto=<?php echo $produto['nome'] ?>" class="button-price">R$<?php echo str_replace('.', ',', $produto['preco']); ?></a>
                     </div>
                 <?php endforeach; ?>
             <?php else : ?>
