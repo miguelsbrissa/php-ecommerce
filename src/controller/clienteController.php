@@ -19,6 +19,16 @@ function findClienteByCpfController($cpf, $conn)
     }
 }
 
+function findClienteByEmailController($email, $conn)
+{
+    $cliente = findClienteByEmailDB($email, $conn);
+    if ($cliente) {
+        return $cliente;
+    } else {
+        return 'Cliente não encontrado';
+    }
+}
+
 function updatelienteByCpfController($cpf, $nome, $email, $senha, $data, $conn)
 {
     if (updateClienteByCpfDB($cpf, $nome, $email, $senha, $data, $conn)) {
