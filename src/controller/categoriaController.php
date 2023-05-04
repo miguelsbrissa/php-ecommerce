@@ -1,4 +1,5 @@
 <?php
+include '../database/categoriaDB.php';
 function createCategoriaController($nome, $conn)
 {
     if (createCategoriaDB($nome, $conn)) {
