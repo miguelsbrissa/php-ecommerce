@@ -9,10 +9,9 @@ function createProdutoDB($nome, $preco, $categoriaId, $img, $descricao, $conn)
 
 function findAllProdutoDB($conn)
 {
-    $sql = "SELECT * FROM";
+    $sql = "SELECT * FROM produto";
     $result = mysqli_query($conn, $sql);
     $produto = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    $produto = array_pop($produto);
 
     return $produto;
 }
