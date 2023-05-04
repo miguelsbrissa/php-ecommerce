@@ -1,12 +1,12 @@
-.content{
+.content {
     width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #BFE151;
+    background: #bfe151;
 }
-.login{
+.login {
     width: 20%;
     height: 50%;
     display: flex;
@@ -18,12 +18,12 @@
     font-weight: 700;
     gap: 2rem;
 }
-.input-field{
+.input-field {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
-.input{
+.input {
     outline: none;
     border: none;
     border-bottom: 2px solid #042940;
@@ -33,15 +33,15 @@
     font-weight: 600;
     padding-bottom: 0.5rem;
 }
-.input::placeholder{
+.input::placeholder {
     color: #04294093;
 }
-label{
+label {
     color: #042940;
     font-size: 1.5rem;
     margin: 1rem 0;
 }
-.input-btn{
+.input-btn {
     border: 2px solid #042940;
     color: #9fc131;
     margin-top: 1rem 0;
@@ -51,13 +51,13 @@ label{
     padding: 10px;
     cursor: pointer;
 }
-h1{
+h1 {
     text-align: center;
     color: #042940;
 }
-.help{
+.help {
     color: #042940;
     font-size: 1rem;
     text-decoration: none;
-margin: 1rem 0;
+    margin: 1rem 0;
 }

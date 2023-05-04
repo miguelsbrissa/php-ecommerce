@@ -10,7 +10,8 @@ function createPagamentoController($tipoCartao, $numero, $nomeTitular, $dataVali
     }
 }
 
-function findPagamentosByClienteController($clienteCpf, $conn){
+function findPagamentosByClienteController($clienteCpf, $conn)
+{
     $listaEnderecos = findPagamentosByClienteDB($clienteCpf, $conn);
     if ($listaEnderecos) {
         return $listaEnderecos;

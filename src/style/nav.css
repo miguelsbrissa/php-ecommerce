@@ -75,7 +75,7 @@ a {
     display: flex;
     flex-direction: column;
 }
-.dropdown:hover .menu-nav-item{
+.dropdown:hover .menu-nav-item {
     box-shadow: inset 500px 0 0 0 #9fc131;
     color: #042940;
 }
@@ -83,13 +83,13 @@ a {
     text-decoration: underline #042940;
     transition: text-decoration 0.5s ease-in-out;
 }
-.info{
+.info {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
-.cliente{
+.cliente {
     font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 1.5rem;
     font-weight: 500;

@@ -16,6 +16,7 @@ function findProdutoByIdDB($id, $conn)
 
     return $produto;
 }
+
 function findProdutoByNameDB($name, $conn)
 {
     $sql = "SELECT * FROM produto WHERE nome = '$name'";

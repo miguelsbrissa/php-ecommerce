@@ -63,7 +63,7 @@
         }
 
         try {
-            createClienteController($input_cpf,$input_nome,$input_email,$input_senha, $input_data, $conn);
+            createClienteController($input_cpf, $input_nome, $input_email, $input_senha, $input_data, $conn);
             header('Location: http://localhost/php-ecommerce/src/pages/login.php');
         } catch (Exception $error) {
             echo 'Erro ao cadastrar cliente: ' . $error;

@@ -1,5 +1,4 @@
 <?php
-
 function createClienteDB($cpf, $nome, $email, $senha, $data, $conn)
 {
     $sql = "INSERT INTO cliente VALUES ('$cpf','$nome','$email','$senha', '$data')";

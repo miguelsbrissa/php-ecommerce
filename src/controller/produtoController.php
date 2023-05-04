@@ -19,6 +19,7 @@ function findProdutoByIdController($id, $conn)
         return 'Produto não encontrado';
     }
 }
+
 function findProdutoByNameController($name, $conn)
 {
     $produto = findProdutoByNameDB($name, $conn);

@@ -1,18 +1,18 @@
-.content{
+.content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
-.cards{
+.cards {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
-.card{
+.card {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -21,14 +21,14 @@
     border-bottom: solid 3px #042940;
     margin: 1rem;
 }
-.left{
+.left {
     width: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.right{
+.right {
     width: 40%;
     display: flex;
     flex-direction: column;
@@ -36,7 +36,7 @@
     justify-content: center;
     margin: 0 1rem;
 }
-.options{
+.options {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -45,7 +45,7 @@
     color: #042940;
     gap: 1rem;
 }
-.text{
+.text {
     font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 1.3rem;
     font-weight: 700;
@@ -56,14 +56,14 @@
     height: auto;
     width: 200px;
 }
-.finalizar{
+.finalizar {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 80%;
 }
-.btn-finalizar{
+.btn-finalizar {
     background-color: #042940;
     width: 100%;
     padding: 1rem;
@@ -79,13 +79,13 @@
     color: #758d24;
     transition: all 0.3s ease-in-out;
 }
-.erro{
+.erro {
     font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 2rem;
     font-weight: 700;
     color: #042940;
     margin: 5rem 3rem 40rem 3rem;
 }
-.icon{
+.icon {
     color: #042940;
 }

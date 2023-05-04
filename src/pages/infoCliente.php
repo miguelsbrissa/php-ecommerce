@@ -62,13 +62,12 @@
         }
 
         try {
-            updatelienteByCpfController($input_cpf,$input_nome,$input_email,$input_senha, $input_dataNasc, $conn);
+            updatelienteByCpfController($input_cpf, $input_nome, $input_email, $input_senha, $input_dataNasc, $conn);
             header('Refresh:3');
         } catch (Exception $error) {
             echo 'Erro ao atualizar os dados do cliente: ' . $error;
         }
     }
-
     if (isset($_POST['cadEndereco'])) {
         if (empty($_POST['rua'])) {
             echo 'Digite o nome da rua!';
@@ -152,7 +151,6 @@
                 FILTER_SANITIZE_FULL_SPECIAL_CHARS
             );
         }
-
         try {
             createPagamentoController($input_tipoCartao, $input_numero, $input_nomeTitular, $input_dataValidade, $clienteCpf, $conn);
             header('Refresh:3');

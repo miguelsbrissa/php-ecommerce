@@ -36,6 +36,7 @@ function finishPedidoByIdController($status, $pedidoId, $enderecoId, $pagamentoI
         return false;
     }
 }
+
 function updateValorPedidoByIdController($valor, $pedidoId, $conn)
 {
     if (updateValorPedidoByIdBD($valor, $pedidoId, $conn)) {

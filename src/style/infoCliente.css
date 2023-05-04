@@ -1,15 +1,15 @@
-.content{
+.content {
     display: flex;
     flex-direction: row;
     width: 100%;
 }
-.on{
+.on {
     display: flex;
 }
-.off{
+.off {
     display: none;
 }
-.sideNav{
+.sideNav {
     display: flex;
     flex-direction: column;
     width: 20%;
@@ -21,7 +21,7 @@
     margin: 1rem;
     height: 50%;
 }
-.sideNav input{
+.sideNav input {
     cursor: pointer;
     margin: 1rem;
     font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -32,27 +32,27 @@
     outline: none;
     border: none;
 }
-.sideNav input:hover{
+.sideNav input:hover {
     text-decoration: solid underline #9fc131;
 }
-.option{
+.option {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
-.info{
+.info {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 50%;
 }
-.icon{
+.icon {
     color: #9fc131;
 }
-.info-dados{
+.info-dados {
     border-radius: 20px;
     background-color: #042940;
     flex-direction: column;
@@ -60,14 +60,14 @@
     margin: 1rem;
     width: 100%;
 }
-.input-field{
+.input-field {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     margin: 1rem;
 }
-.input{
+.input {
     outline: none;
     font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 1.3rem;
@@ -77,14 +77,14 @@
     border-bottom: 2px solid #9fc131;
     background-color: transparent;
 }
-label{
+label {
     font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 1.3rem;
     font-weight: 600;
     color: #9fc131;
     margin: 0 1rem;
 }
-.input-add{
+.input-add {
     border-radius: 30px;
     outline: none;
     margin: 2rem 0;
@@ -97,11 +97,11 @@ label{
     border: 2px solid #9fc131;
     cursor: pointer;
 }
-.input-add:hover{
+.input-add:hover {
     background-color: #0000003f;
     transition: all 0.5s ease-in-out;
 }
-.tabela-dados{
+.tabela-dados {
     font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 1rem;
     font-weight: 500;
@@ -109,11 +109,12 @@ label{
     border-collapse: collapse;
     width: 100%;
 }
-.tabela-dados td, .tabela-dados th{
+.tabela-dados td,
+.tabela-dados th {
     border: 2px solid #9fc131;
     padding: 1rem;
 }
-.tabela-dados th{
+.tabela-dados th {
     font-weight: 700;
     color: #9fc131;
 }

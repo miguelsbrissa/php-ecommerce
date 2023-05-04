@@ -1,5 +1,4 @@
 <?php
-
 function createPedidoDB($valor, $dataPedido, $statusPedido, $clienteCpf, $conn)
 {
     $sql = "INSERT INTO pedido VALUES(NULL, $valor, '$dataPedido', '$statusPedido', '$clienteCpf', NULL, NULL)";
@@ -33,6 +32,7 @@ function finishPedidoByIdBD($status, $pedidoId, $enderecoId, $pagamentoId, $conn
 
     return $result;
 }
+
 function updateValorPedidoByIdBD($valor, $pedidoId, $conn) //essa função finaliza o pedido então só é necassário att o status e o valor
 {
     $sql = "UPDATE pedido SET valor ='$valor' WHERE idPedido = '$pedidoId'";

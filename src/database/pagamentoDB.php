@@ -7,7 +7,8 @@ function createPagamentoDB($tipoCartao, $numero, $nomeTitular, $dataValidade, $c
     return $result;
 }
 
-function findPagamentosByClienteDB($clienteCpf, $conn){
+function findPagamentosByClienteDB($clienteCpf, $conn)
+{
     $sql = "SELECT * FROM pagamento WHERE cpfCliente = '$clienteCpf'";
     $result = mysqli_query($conn, $sql);
     $listaPagamentos = mysqli_fetch_all($result, MYSQLI_ASSOC);

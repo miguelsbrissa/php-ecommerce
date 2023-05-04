@@ -1,28 +1,28 @@
-.content{
+.content {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
-.top-cards{
+.top-cards {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     width: 80%;
 }
-.input-icon{
+.input-icon {
     width: 50%;
 }
-.input-icon i{
+.input-icon i {
     position: absolute;
 }
-.icon{
+.icon {
     padding: 1rem;
     color: #9fc131;
     font-size: 1.2rem;
 }
-.search-input{
+.search-input {
     padding: 1rem 1rem 1rem 3rem;
     width: 100%;
     border-radius: 50px;
@@ -34,10 +34,10 @@
     font-weight: 600;
     font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-input::placeholder{
+input::placeholder {
     color: #9fc131;
 }
-.cat-name{
+.cat-name {
     font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 2rem;
     font-weight: 700;
@@ -88,7 +88,7 @@ input::placeholder{
     text-decoration: solid underline #9fc131;
     transition: all 0.3s ease-in-out;
 }
-.erro{
+.erro {
     font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 2rem;
     font-weight: 700;
