@@ -160,7 +160,7 @@
     }
     $listaEnderecos = findEnderecosByClienteController($clienteCpf, $conn);
     $listaPagamentos = findPagamentosByClienteController($clienteCpf, $conn);
-    $listaPedidos = [];
+    $listaPedidos = findAllPedidoByClienteController($clienteCpf, $conn);
 
     ?>
     <div class="content">
@@ -313,7 +313,7 @@
                         <tr>
                             <td><?php echo $pedido['status_pedido']; ?></td>
                             <td><?php echo date("d/m/y h:i:s", strtotime($pedido['data_pedido'])); ?></td>
-                            <td>R$<?php echo str_replace($pedido['valor'], '.', ','); ?></td>
+                            <td>R$<?php echo str_replace('.', ',', $pedido['valor']); ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>
