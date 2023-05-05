@@ -16,9 +16,9 @@
 <body>
     <?php include '../components/nav.php'; ?>
     <?php
-    include '../controller/clienteController.php';
     include '../controller/pagamentoController.php';
     include '../controller/enderecoController.php';
+    include '../controller/pedidoController.php';
 
     $cliente_nome = $cliente['nome'];
     $clienteCpf = $cliente['cpf'];
@@ -160,6 +160,8 @@
     }
     $listaEnderecos = findEnderecosByClienteController($clienteCpf, $conn);
     $listaPagamentos = findPagamentosByClienteController($clienteCpf, $conn);
+    $listaPedidos = [];
+
     ?>
     <div class="content">
         <div class="sideNav">
@@ -301,7 +303,20 @@
                 </div>
             </div>
             <div class="info-dados off" id="dados-compra">
-                compras
+                <table class="tabela-dados" aria-label="">
+                    <tr>
+                        <th>Status do pedido</th>
+                        <th>Data do pedido</th>
+                        <th>Valor total do pedido</th>
+                    </tr>
+                    <?php foreach ($listaPedidos as $pedido) : ?>
+                        <tr>
+                            <td><?php echo $pedido['status_pedido']; ?></td>
+                            <td><?php echo date("d/m/y h:i:s", strtotime($pedido['data_pedido'])); ?></td>
+                            <td>R$<?php echo str_replace($pedido['valor'], '.', ','); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
             </div>
         </div>
     </div>
