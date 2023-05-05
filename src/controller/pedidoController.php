@@ -9,6 +9,16 @@ function createPedidoController($valor, $dataPedido, $statusPedido, $clienteCpf,
     }
 }
 
+function findAllPedidoByClienteController($clienteCpf, $conn)
+{
+    $pedido = findAllPedidoByClienteDB($clienteCpf, $conn);
+    if ($pedido) {
+        return $pedido;
+    } else {
+        return [];
+    }
+}
+
 function findPedidoByClienteController($clienteCpf, $statusPedido, $conn)
 {
     $pedido = findPedidoByClienteDB($clienteCpf, $statusPedido, $conn);

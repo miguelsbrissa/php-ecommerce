@@ -7,6 +7,15 @@ function createPedidoDB($valor, $dataPedido, $statusPedido, $clienteCpf, $conn)
     return $result;
 }
 
+function findAllPedidoByClienteDB($clienteCpf, $conn)
+{
+    $sql = "SELECT * FROM pedido WHERE cliente_cpf = '$clienteCpf';";
+    $result = $result = mysqli_query($conn, $sql);
+    $pedidos = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    return $pedidos;
+}
+
 function findPedidoByClienteDB($clienteCpf, $statusPedido, $conn)
 {
     $sql = "SELECT * FROM pedido WHERE cliente_cpf = '$clienteCpf' AND status_pedido = '$statusPedido';";
