@@ -191,7 +191,7 @@
             </ul>
         </div>
         <div class="info">
-            <div class="info-dados on" id="dados-pessoais">
+            <div class="info-dados toggle" id="dados-pessoais">
                 <form action="" method="post">
                     <div class="input-field">
                         <label for="">CPF:</label>
@@ -216,7 +216,7 @@
                     <input class="input-add" type="submit" value="Atualizar cadastro" name="updateCliente">
                 </form>
             </div>
-            <div class="info-dados off" id="dados-endereco">
+            <div class="info-dados" id="dados-endereco">
                 <form action="" method="post">
                     <div class="input-field">
                         <label for="">Rua:</label>
@@ -261,7 +261,7 @@
                     </table>
                 </div>
             </div>
-            <div class="info-dados off" id="dados-pagamento">
+            <div class="info-dados" id="dados-pagamento">
                 <form action="" method="post">
                     <div class="input-field">
                         <label for="tipo_cartao">Débito</label>
@@ -302,7 +302,7 @@
                     </table>
                 </div>
             </div>
-            <div class="info-dados off" id="dados-compra">
+            <div class="info-dados" id="dados-compra">
                 <table class="tabela-dados" aria-label="">
                     <tr>
                         <th>Status do pedido</th>
@@ -323,6 +323,22 @@
     <?php include '../components/footer.php'; ?>
 </body>
 <script>
+    function changeClasses(value) {
+        const divDadosPessoais = document.getElementById('dados-pessoais')
+        const divDadosEndereco = document.getElementById('dados-endereco')
+        const divDadosPagamento = document.getElementById('dados-pagamento')
+        const divDadosCompras = document.getElementById('dados-compra')
+        const listaDivs = [divDadosPessoais, divDadosEndereco, divDadosPagamento, divDadosCompras]
+
+        listaDivs.forEach(div => {
+            if (div.id !== value) {
+                if (div.classList.contains('toggle')) {
+                    div.classList.toggle('toggle')
+                }
+            }
+        })
+    }
+
     function switchContent(conteudo) {
         const divDadosPessoais = document.getElementById('dados-pessoais')
         const divDadosEndereco = document.getElementById('dados-endereco')
@@ -331,56 +347,20 @@
 
         switch (conteudo) {
             case 'pessoal':
-                divDadosPessoais.classList.remove('off')
-                divDadosPessoais.classList.add('on')
-
-                divDadosEndereco.classList.remove('on')
-                divDadosEndereco.classList.add('off')
-
-                divDadosPagamento.classList.remove('on')
-                divDadosPagamento.classList.add('off')
-
-                divDadosCompras.classList.remove('on')
-                divDadosCompras.classList.add('off')
+                divDadosPessoais.classList.toggle('toggle')
+                changeClasses('dados-pessoais')
                 break;
             case 'endereco':
-                divDadosPessoais.classList.remove('on')
-                divDadosPessoais.classList.add('off')
-
-                divDadosEndereco.classList.remove('off')
-                divDadosEndereco.classList.add('on')
-
-                divDadosPagamento.classList.remove('on')
-                divDadosPagamento.classList.add('off')
-
-                divDadosCompras.classList.remove('on')
-                divDadosCompras.classList.add('off')
+                divDadosEndereco.classList.toggle('toggle')
+                changeClasses('dados-endereco')
                 break;
             case 'pagamento':
-                divDadosPessoais.classList.remove('on')
-                divDadosPessoais.classList.add('off')
-
-                divDadosEndereco.classList.remove('on')
-                divDadosEndereco.classList.add('off')
-
-                divDadosPagamento.classList.remove('off')
-                divDadosPagamento.classList.add('on')
-
-                divDadosCompras.classList.remove('on')
-                divDadosCompras.classList.add('off')
+                divDadosPagamento.classList.toggle('toggle')
+                changeClasses('dados-pagamento')
                 break;
             case 'compras':
-                divDadosPessoais.classList.remove('on')
-                divDadosPessoais.classList.add('off')
-
-                divDadosEndereco.classList.remove('on')
-                divDadosEndereco.classList.add('off')
-
-                divDadosPagamento.classList.remove('on')
-                divDadosPagamento.classList.add('off')
-
-                divDadosCompras.classList.remove('off')
-                divDadosCompras.classList.add('on')
+                divDadosCompras.classList.toggle('toggle')
+                changeClasses('dados-compra')
                 break;
         }
     }
