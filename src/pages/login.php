@@ -23,11 +23,8 @@
     if (isset($_POST['login'])) {
         $input_email = handleInputEmail('email');
         $input_senha = handleInputText('senha');
-
-        $sql = "SELECT * FROM cliente WHERE email = '$input_email'";
-        $result = mysqli_query($conn, $sql);
-        $cliente = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        $cliente = array_pop($cliente);
+        $cliente = findClienteByEmailController($input_email, $conn);
+        
         if (!empty($cliente)) {
             if ($input_senha === $cliente['senha']) {
                 login($input_email);
