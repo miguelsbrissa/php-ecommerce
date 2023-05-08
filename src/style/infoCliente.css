@@ -116,3 +116,9 @@ label {
     font-weight: 700;
     color: #9fc131;
 }
+.error {
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ad0808;
+}

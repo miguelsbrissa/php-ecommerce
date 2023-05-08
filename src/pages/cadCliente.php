@@ -18,18 +18,21 @@
     include '../helpers/inputValidation.php';
     include '../controller/clienteController.php';
 
-    $input_nome = $input_cpf = $input_data = $input_email = $input_senha = '';
-
+    $msgError = null;
     if (isset($_POST['cadastro'])) {
-            $input_nome = handleInputText('nome');
-            $input_cpf = handleInputText('cpf');
-            $input_data = handleInputText('data_nasc');
-            $input_email = handleInputEmail('email');
-            $input_senha = handleInputText('senha');
+        $input_nome = handleInputText('nome');
+        $input_cpf = handleInputText('cpf');
+        $input_data = handleInputText('data_nasc');
+        $input_email = handleInputEmail('email');
+        $input_senha = handleInputText('senha');
 
         try {
-            createClienteController($input_cpf, $input_nome, $input_email, $input_senha, $input_data, $conn);
-            header('Location: http://localhost/php-ecommerce/src/pages/login.php');
+            if ($input_cpf === '' || $input_nome === '' || $input_email === '' || $input_senha === '' || $input_data === '') {
+                $msgError = 'Algum campo está vazio';
+            } else {
+                createClienteController($input_cpf, $input_nome, $input_email, $input_senha, $input_data, $conn);
+                header('Location: http://localhost/php-ecommerce/src/pages/login.php');
+            }
         } catch (Exception $error) {
             echo 'Erro ao cadastrar cliente: ' . $error;
         }
@@ -38,6 +41,9 @@
     <div class="content">
         <form class="cadastro" method="post">
             <h1>Cadastro</h1>
+            <?php if ($msgError) : ?>
+                <h1 class="error"><?php echo $msgError; ?></h1>
+            <?php endif; ?>
             <div class="input-field">
                 <label for="">CPF</label>
                 <input class="input" type="text" name="cpf" id="cpf" placeholder="Digite seu CPF" onkeydown="cpfFormatter()" maxlength="14">

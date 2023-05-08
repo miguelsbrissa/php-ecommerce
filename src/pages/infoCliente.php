@@ -19,18 +19,27 @@
     include '../controller/pagamentoController.php';
     include '../controller/enderecoController.php';
     include '../controller/pedidoController.php';
+    include '../helpers/inputValidation.php';
 
     $cliente_nome = $cliente['nome'];
     $clienteCpf = $cliente['cpf'];
+    $msgErrorCli = null;
+    $msgErrorEnd = null;
+    $msgErrorPag = null;
 
     if (isset($_POST['updateCliente'])) {
         $input_nome = handleInputText('nome');
         $input_dataNasc = handleInputText('data_nasc');
         $input_email = handleInputEmail('email');
         $input_senha = handleInputText('senha');
+        $msgErrorCli = null;
         try {
-            updatelienteByCpfController($input_cpf, $input_nome, $input_email, $input_senha, $input_dataNasc, $conn);
-            header('Refresh:3');
+            if ($input_nome === '' || $input_email === '' || $input_senha === '' || $input_dataNasc === '') {
+                $msgErrorCli = 'Algum campo estava vazio, tente novamente!';
+            } else {
+                updatelienteByCpfController($clienteCpf, $input_nome, $input_email, $input_senha, $input_dataNasc, $conn);
+                header('Refresh:3');
+            }
         } catch (Exception $error) {
             echo 'Erro ao atualizar os dados do cliente: ' . $error;
         }
@@ -41,21 +50,31 @@
         $input_bairro = handleInputText('bairro');
         $input_cidade = handleInputText('cidade');
         $input_cep = handleInputText('cep');
+        $msgErrorEnd = null;
         try {
-            createEnderecoController($input_rua, $input_numero, $input_bairro, $input_cidade, $input_cep, $clienteCpf, $conn);
-            header('Refresh:3');
+            if ($input_rua === '' || $input_numero === '' || $input_bairro === '' || $input_cidade === '' || $input_cep === '') {
+                $msgErrorEnd = 'Algum campo estava vazio, tente novamente!';
+            } else {
+                createEnderecoController($input_rua, $input_numero, $input_bairro, $input_cidade, $input_cep, $clienteCpf, $conn);
+                header('Refresh:3');
+            }
         } catch (Exception $error) {
             echo 'Erro ao cadastrar endereco: ' . $error;
         }
     }
     if (isset($_POST['cadPagamento'])) {
-            $input_tipoCartao = $input_cep = handleEmptyInput('tipo_cartao');
-            $input_numero = handleInputText('numero');
-            $input_nomeTitular = handleInputText('nome_titular');
-            $input_dataValidade = handleInputText('data_validade');
+        $input_tipoCartao = $input_cep = handleEmptyInput('tipo_cartao');
+        $input_numero = handleInputText('numero');
+        $input_nomeTitular = handleInputText('nome_titular');
+        $input_dataValidade = handleInputText('data_validade');
+        $msgErrorPag = null;
         try {
-            createPagamentoController($input_tipoCartao, $input_numero, $input_nomeTitular, $input_dataValidade, $clienteCpf, $conn);
-            header('Refresh:3');
+            if ($input_tipoCartao === '' || $input_numero === '' || $input_nomeTitular === '' || $input_dataValidade === '') {
+                $msgErrorPag = 'Algum campo estava vazio, tente novamente!';
+            } else {
+                createPagamentoController($input_tipoCartao, $input_numero, $input_nomeTitular, $input_dataValidade, $clienteCpf, $conn);
+                header('Refresh:3');
+            }
         } catch (Exception $error) {
             echo 'Erro ao cadastrar forma de pagamento: ' . $error;
         }
@@ -95,6 +114,9 @@
         <div class="info">
             <div class="info-dados toggle" id="dados-pessoais">
                 <form action="" method="post">
+                    <?php if ($msgErrorCli) : ?>
+                        <h1 class="error"><?php echo $msgErrorCli; ?></h1>
+                    <?php endif; ?>
                     <div class="input-field">
                         <label for="">CPF:</label>
                         <input class="input" type="text" name="cpf" id="" value="<?php echo $cliente['cpf']; ?>" disabled>
@@ -120,6 +142,9 @@
             </div>
             <div class="info-dados" id="dados-endereco">
                 <form action="" method="post">
+                    <?php if ($msgErrorEnd) : ?>
+                        <h1 class="error"><?php echo $msgErrorEnd; ?></h1>
+                    <?php endif; ?>
                     <div class="input-field">
                         <label for="">Rua:</label>
                         <input class="input" type="text" name="rua" id="" value="">
@@ -165,6 +190,9 @@
             </div>
             <div class="info-dados" id="dados-pagamento">
                 <form action="" method="post">
+                    <?php if ($msgErrorPag) : ?>
+                        <h1 class="error"><?php echo $msgErrorPag; ?></h1>
+                    <?php endif; ?>
                     <div class="input-field">
                         <label for="tipo_cartao">Débito</label>
                         <input type="radio" name="tipo_cartao" id="debito" value="Debito">

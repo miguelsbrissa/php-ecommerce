@@ -16,6 +16,8 @@
     <?php
     //faz logout antes de tudo caso o cliene tenha sido redireciona pra ca por ter feito logout
     include '../Auth/Auth.php';
+    include '../controller/clienteController.php';
+    include '../helpers/inputValidation.php';
     include '../database/connection.php';
     logout();
 

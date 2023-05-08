@@ -16,7 +16,7 @@
     border-radius: 20px;
     padding: 2rem;
     font-weight: 700;
-    gap: 2rem;
+    gap: 1rem;
 }
 .input-field {
     display: flex;
@@ -44,7 +44,7 @@ label {
 .input-btn {
     border: 2px solid #042940;
     color: #9fc131;
-    margin-top: 1rem 0;
+    margin-top: 2rem;
     font-size: 1.5rem;
     border-radius: 20px;
     background-color: #042940;
@@ -54,4 +54,10 @@ label {
 h1 {
     text-align: center;
     color: #042940;
+}
+.error {
+    font-family: Raleway, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ad0808;
 }
