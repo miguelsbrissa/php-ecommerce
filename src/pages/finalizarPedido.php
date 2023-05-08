@@ -30,12 +30,12 @@
 
     if (isset($_POST['finalizar'])) {
         if (isset($_POST['enderecos'])) {
-            $enderecoId = handleRadioInput('enderecos');
+            $enderecoId = handleEmptyInput('enderecos');
         } else {
             echo 'Por favor selecione um endereço!';
         }
         if (isset($_POST['pagamentos'])) {
-            $pagamentoId = handleRadioInput('pagamentos');
+            $pagamentoId = handleEmptyInput('pagamentos');
         } else {
             echo 'Por favor selecione uma forma pagamento!';
         }

@@ -21,21 +21,8 @@
 
     $input_email = $input_senha = '';
     if (isset($_POST['login'])) {
-        if (empty($_POST['email'])) {
-            echo 'Digite o email';
-        } else {
-            $input_email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-        }
-
-        if (empty($_POST['senha'])) {
-            echo 'Digite a senha!';
-        } else {
-            $input_senha = filter_input(
-                INPUT_POST,
-                'senha',
-                FILTER_SANITIZE_FULL_SPECIAL_CHARS
-            );
-        }
+        $input_email = handleInputEmail('email');
+        $input_senha = handleInputText('senha');
 
         $sql = "SELECT * FROM cliente WHERE email = '$input_email'";
         $result = mysqli_query($conn, $sql);

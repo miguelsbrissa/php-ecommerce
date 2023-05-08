@@ -24,43 +24,10 @@
     $clienteCpf = $cliente['cpf'];
 
     if (isset($_POST['updateCliente'])) {
-        if (empty($_POST['nome'])) {
-            echo 'Digite o nome!';
-        } else {
-            $input_nome = filter_input(
-                INPUT_POST,
-                'nome',
-                FILTER_SANITIZE_FULL_SPECIAL_CHARS
-            );
-        }
-        if (empty($_POST['data_nasc'])) {
-            echo 'Digite a data!';
-        } else {
-            $input_dataNasc = filter_input(
-                INPUT_POST,
-                'data_nasc',
-                FILTER_SANITIZE_FULL_SPECIAL_CHARS
-            );
-        }
-        if (empty($_POST['email'])) {
-            echo 'Digite o email!';
-        } else {
-            $input_email = filter_input(
-                INPUT_POST,
-                'email',
-                FILTER_SANITIZE_EMAIL
-            );
-        }
-        if (empty($_POST['senha'])) {
-            echo 'Digite a senha!';
-        } else {
-            $input_senha = filter_input(
-                INPUT_POST,
-                'senha',
-                FILTER_SANITIZE_FULL_SPECIAL_CHARS
-            );
-        }
-
+        $input_nome = handleInputText('nome');
+        $input_dataNasc = handleInputText('data_nasc');
+        $input_email = handleInputEmail('email');
+        $input_senha = handleInputText('senha');
         try {
             updatelienteByCpfController($input_cpf, $input_nome, $input_email, $input_senha, $input_dataNasc, $conn);
             header('Refresh:3');
@@ -69,48 +36,11 @@
         }
     }
     if (isset($_POST['cadEndereco'])) {
-        if (empty($_POST['rua'])) {
-            echo 'Digite o nome da rua!';
-        } else {
-            $input_rua = filter_input(
-                INPUT_POST,
-                'rua',
-                FILTER_SANITIZE_FULL_SPECIAL_CHARS
-            );
-        }
-        if (empty($_POST['numero'])) {
-            echo 'Digite o nome da numero!';
-        } else {
-            $input_numero = (int) $_POST['numero'];
-        }
-        if (empty($_POST['bairro'])) {
-            echo 'Digite o nome da bairro!';
-        } else {
-            $input_bairro = filter_input(
-                INPUT_POST,
-                'bairro',
-                FILTER_SANITIZE_FULL_SPECIAL_CHARS
-            );
-        }
-        if (empty($_POST['cidade'])) {
-            echo 'Digite o nome da cidade!';
-        } else {
-            $input_cidade = filter_input(
-                INPUT_POST,
-                'cidade',
-                FILTER_SANITIZE_FULL_SPECIAL_CHARS
-            );
-        }
-        if (empty($_POST['cep'])) {
-            echo 'Digite o nome da cep!';
-        } else {
-            $input_cep = filter_input(
-                INPUT_POST,
-                'cep',
-                FILTER_SANITIZE_FULL_SPECIAL_CHARS
-            );
-        }
-
+        $input_rua = handleInputText('rua');
+        $input_numero = (int) handleEmptyInput('numero');
+        $input_bairro = handleInputText('bairro');
+        $input_cidade = handleInputText('cidade');
+        $input_cep = handleInputText('cep');
         try {
             createEnderecoController($input_rua, $input_numero, $input_bairro, $input_cidade, $input_cep, $clienteCpf, $conn);
             header('Refresh:3');
@@ -119,38 +49,10 @@
         }
     }
     if (isset($_POST['cadPagamento'])) {
-        if (empty($_POST['tipo_cartao'])) {
-            echo 'Escolha o tipo do cartão!';
-        } else {
-            $input_tipoCartao = $_POST['tipo_cartao'];
-        }
-        if (empty($_POST['numero'])) {
-            echo 'Digite o nome da numero!';
-        } else {
-            $input_numero = filter_input(
-                INPUT_POST,
-                'numero',
-                FILTER_SANITIZE_FULL_SPECIAL_CHARS
-            );
-        }
-        if (empty($_POST['nome_titular'])) {
-            echo 'Digite o nome da bairro!';
-        } else {
-            $input_nomeTitular = filter_input(
-                INPUT_POST,
-                'nome_titular',
-                FILTER_SANITIZE_FULL_SPECIAL_CHARS
-            );
-        }
-        if (empty($_POST['data_validade'])) {
-            echo 'Digite o nome da cidade!';
-        } else {
-            $input_dataValidade = filter_input(
-                INPUT_POST,
-                'data_validade',
-                FILTER_SANITIZE_FULL_SPECIAL_CHARS
-            );
-        }
+            $input_tipoCartao = $input_cep = handleEmptyInput('tipo_cartao');
+            $input_numero = handleInputText('numero');
+            $input_nomeTitular = handleInputText('nome_titular');
+            $input_dataValidade = handleInputText('data_validade');
         try {
             createPagamentoController($input_tipoCartao, $input_numero, $input_nomeTitular, $input_dataValidade, $clienteCpf, $conn);
             header('Refresh:3');

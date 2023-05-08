@@ -22,7 +22,7 @@ function handleInputEmail($inputName)
     return $inputValue;
 }
 
-function handleRadioInput($inputName)
+function handleEmptyInput($inputName)
 {
     if (!empty($_POST[$inputName])) {
         $inputValue = $_POST[$inputName];
