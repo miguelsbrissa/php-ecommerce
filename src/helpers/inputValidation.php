@@ -21,3 +21,14 @@ function handleInputEmail($inputName)
 
     return $inputValue;
 }
+
+function handleRadioInput($inputName)
+{
+    if (!empty($_POST[$inputName])) {
+        $inputValue = $_POST[$inputName];
+    } else {
+        $inputValue = null;
+    }
+
+    return $inputValue;
+}
