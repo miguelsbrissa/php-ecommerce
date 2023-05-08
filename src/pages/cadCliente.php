@@ -15,52 +15,17 @@
 <body>
     <?php
     include '../database/connection.php';
+    include '../helpers/inputValidation.php';
     include '../controller/clienteController.php';
 
     $input_nome = $input_cpf = $input_data = $input_email = $input_senha = '';
 
     if (isset($_POST['cadastro'])) {
-        if (empty($_POST['nome'])) {
-            echo 'Digite a nome!';
-        } else {
-            $input_nome = filter_input(
-                INPUT_POST,
-                'nome',
-                FILTER_SANITIZE_FULL_SPECIAL_CHARS
-            );
-        }
-        if (empty($_POST['cpf'])) {
-            echo 'Digite a cpf!';
-        } else {
-            $input_cpf = filter_input(
-                INPUT_POST,
-                'cpf',
-                FILTER_SANITIZE_FULL_SPECIAL_CHARS
-            );
-        }
-        if (empty($_POST['data_nasc'])) {
-            echo 'Digite a data!';
-        } else {
-            $input_data = filter_input(
-                INPUT_POST,
-                'data_nasc',
-                FILTER_SANITIZE_FULL_SPECIAL_CHARS
-            );
-        }
-        if (empty($_POST['email'])) {
-            echo 'Digite o email';
-        } else {
-            $input_email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-        }
-        if (empty($_POST['senha'])) {
-            echo 'Digite a senha!';
-        } else {
-            $input_senha = filter_input(
-                INPUT_POST,
-                'senha',
-                FILTER_SANITIZE_FULL_SPECIAL_CHARS
-            );
-        }
+            $input_nome = handleInputText('nome');
+            $input_cpf = handleInputText('cpf');
+            $input_data = handleInputText('data_nasc');
+            $input_email = handleInputEmail('email');
+            $input_senha = handleInputText('senha');
 
         try {
             createClienteController($input_cpf, $input_nome, $input_email, $input_senha, $input_data, $conn);
