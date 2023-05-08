@@ -19,6 +19,7 @@
     include '../controller/pedidoController.php';
     include '../controller/enderecoController.php';
     include '../controller/pagamentoController.php';
+    include '../helpers/inputValidation.php';
 
     $clienteCpf = $cliente['cpf'];
     $pedido = findPedidoByClienteController($clienteCpf, 'ABERTO', $conn);
@@ -29,12 +30,12 @@
 
     if (isset($_POST['finalizar'])) {
         if (isset($_POST['enderecos'])) {
-            $enderecoId = $_POST['enderecos'];
+            $enderecoId = handleRadioInput('enderecos');
         } else {
             echo 'Por favor selecione um endereço!';
         }
         if (isset($_POST['pagamentos'])) {
-            $pagamentoId = $_POST['pagamentos'];
+            $pagamentoId = handleRadioInput('pagamentos');
         } else {
             echo 'Por favor selecione uma forma pagamento!';
         }
