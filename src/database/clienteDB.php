@@ -28,7 +28,7 @@ function findClienteByEmailDB($email, $conn)
 }
 function updateClienteByCpfDB($cpf, $nome, $email, $senha, $data, $conn)
 {
-    $sql = "UPDATE cliente SET nome='$nome',email='$email',data_nasc='$data',senha='$senha' WHERE cpf=$cpf";
+    $sql = "UPDATE cliente SET nome='$nome',email='$email',senha='$senha',data_nasc='$data' WHERE cpf='$cpf';";
     $result = mysqli_query($conn, $sql);
 
     return $result;
