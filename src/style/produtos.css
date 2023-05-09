@@ -16,6 +16,7 @@
 }
 .input-icon i {
     position: absolute;
+    padding: 0.5rem 1rem;
 }
 .icon {
     padding: 1rem;
@@ -23,7 +24,7 @@
     font-size: 1.2rem;
 }
 .search-input {
-    padding: 1rem 1rem 1rem 3rem;
+    padding: 1rem 1rem 1rem 4rem;
     width: 100%;
     border-radius: 50px;
     outline: none;
