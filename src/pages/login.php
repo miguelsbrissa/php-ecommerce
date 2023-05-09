@@ -18,6 +18,7 @@
     include '../Auth/Auth.php';
     include '../controller/clienteController.php';
     include '../helpers/inputValidation.php';
+    include '../helpers/globalConstants.php';
     include '../database/connection.php';
     logout();
 
@@ -31,10 +32,10 @@
             if ($input_senha === $cliente['senha']) {
                 login($input_email);
             } else { //se senha estiver incorreta
-                echo 'Email e/ou senha incorreto(s)!';
+                echo CRED_ERROR;
             }
         } else { //se nao achar o email
-            echo 'Email e/ou senha incorreto(s)!';
+            echo CRED_ERROR;
         }
     }
     ?>

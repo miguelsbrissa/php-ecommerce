@@ -20,6 +20,7 @@
     include '../controller/enderecoController.php';
     include '../controller/pedidoController.php';
     include '../helpers/inputValidation.php';
+    include '../helpers/globalConstants.php';
 
     $cliente_nome = $cliente['nome'];
     $clienteCpf = $cliente['cpf'];
@@ -35,10 +36,10 @@
         $msgErrorCli = null;
         try {
             if ($input_nome === '' || $input_email === '' || $input_senha === '' || $input_dataNasc === '') {
-                $msgErrorCli = 'Algum campo estava vazio, tente novamente!';
+                $msgErrorCli = ERROR_MESSAGE;
             } else {
                 updatelienteByCpfController($clienteCpf, $input_nome, $input_email, $input_senha, $input_dataNasc, $conn);
-                header('Refresh:3');
+                header(REFRESH_PAGE);
             }
         } catch (Exception $error) {
             echo 'Erro ao atualizar os dados do cliente: ' . $error;
@@ -53,10 +54,10 @@
         $msgErrorEnd = null;
         try {
             if ($input_rua === '' || $input_numero === '' || $input_bairro === '' || $input_cidade === '' || $input_cep === '') {
-                $msgErrorEnd = 'Algum campo estava vazio, tente novamente!';
+                $msgErrorEnd = ERROR_MESSAGE;
             } else {
                 createEnderecoController($input_rua, $input_numero, $input_bairro, $input_cidade, $input_cep, $clienteCpf, $conn);
-                header('Refresh:3');
+                header(REFRESH_PAGE);
             }
         } catch (Exception $error) {
             echo 'Erro ao cadastrar endereco: ' . $error;
@@ -70,10 +71,10 @@
         $msgErrorPag = null;
         try {
             if ($input_tipoCartao === '' || $input_numero === '' || $input_nomeTitular === '' || $input_dataValidade === '') {
-                $msgErrorPag = 'Algum campo estava vazio, tente novamente!';
+                $msgErrorPag = ERROR_MESSAGE;
             } else {
                 createPagamentoController($input_tipoCartao, $input_numero, $input_nomeTitular, $input_dataValidade, $clienteCpf, $conn);
-                header('Refresh:3');
+                header(REFRESH_PAGE);
             }
         } catch (Exception $error) {
             echo 'Erro ao cadastrar forma de pagamento: ' . $error;

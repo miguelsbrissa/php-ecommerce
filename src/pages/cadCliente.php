@@ -16,6 +16,7 @@
     <?php
     include '../database/connection.php';
     include '../helpers/inputValidation.php';
+    include '../helpers/globalConstants.php';
     include '../controller/clienteController.php';
 
     $msgError = null;
@@ -28,7 +29,7 @@
 
         try {
             if ($input_cpf === '' || $input_nome === '' || $input_email === '' || $input_senha === '' || $input_data === '') {
-                $msgError = 'Algum campo está vazio';
+                $msgError = ERROR_MESSAGE;
             } else {
                 createClienteController($input_cpf, $input_nome, $input_email, $input_senha, $input_data, $conn);
                 header('Location: http://localhost/php-ecommerce/src/pages/login.php');
