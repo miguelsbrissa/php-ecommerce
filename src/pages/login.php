@@ -14,22 +14,23 @@
 
 <body>
     <?php
-    //faz logout antes de tudo caso o cliene tenha sido redireciona pra ca por ter feito logout
     include '../Auth/Auth.php';
     include '../controller/clienteController.php';
     include '../helpers/inputValidation.php';
     include '../helpers/globalConstants.php';
     include '../database/connection.php';
-    logout();
+    logout(); //faz logout antes de tudo caso o cliene tenha sido redireciona pra ca por ter feito logout
 
     $input_email = $input_senha = '';
     if (isset($_POST['login'])) {
         $input_email = handleInputEmail('email');
         $input_senha = handleInputText('senha');
         $cliente = findClienteByEmailController($input_email, $conn);
-        
+
         if (!empty($cliente)) {
-            if ($input_senha === $cliente['senha']) {
+            if ($input_email === $_ENV['ADMIN'] && $input_senha === $_ENV['ADMIN_PASS']) {
+                login($input_email, true);
+            } elseif ($input_senha === $cliente['senha']) {
                 login($input_email);
             } else { //se senha estiver incorreta
                 echo CRED_ERROR;

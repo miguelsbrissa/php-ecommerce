@@ -12,10 +12,14 @@ function logout()
     setcookie("user_email", 'adsadasd', time() - 3600); //seta o cookie com um tempo negativo para ele ser deletado
 }
 
-function login($email)
+function login($email, $admin = false)
 {
     $cookieName = "user_email";
     $cookieValue = $email;
     setcookie($cookieName, $cookieValue, time() + (86400 * 30), "/"); //dura um dia
-    header('Location: http://localhost/php-ecommerce/src/pages/index.php');
+    if ($admin) {
+        header('Location: http://localhost/php-ecommerce/src/pages/admin/index.php');
+    } else {
+        header('Location: http://localhost/php-ecommerce/src/pages/index.php');
+    }
 }
