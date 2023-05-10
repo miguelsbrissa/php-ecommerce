@@ -36,6 +36,15 @@ function findProdutoByNameDB($name, $conn)
     return $produto;
 }
 
+function findAllProdutosLikeNameDB($term, $conn)
+{
+    $sql = "SELECT * FROM produto WHERE nome LIKE '%$term%'";
+    $result = mysqli_query($conn, $sql);
+    $produtos = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    return $produtos;
+}
+
 function findProdutoByCategoriaDB($catName, $conn)
 {
     $sql = "SELECT idCategoria FROM categoria WHERE nome = '$catName'";

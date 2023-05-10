@@ -40,6 +40,16 @@ function findProdutoByNameController($name, $conn)
     }
 }
 
+function findAllProdutosLikeNameController($term, $conn)
+{
+    $produtos = findAllProdutosLikeNameDB($term, $conn);
+    if ($produtos) {
+        return $produtos;
+    } else {
+        return 'Produto(s) não encontrado(s)';
+    }
+}
+
 function findProdutoByCategoriaController($catName, $conn)
 {
     $produtosByCat = findProdutoByCategoriaDB($catName, $conn);
