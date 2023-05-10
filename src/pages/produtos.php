@@ -29,10 +29,10 @@
             <?php else : ?>
                 <h1 class="erro"> A categoria não foi selecionada! </h1>
             <?php endif; ?>
-            <div class="input-icon">
-                <i class="fa-solid fa-magnifying-glass icon"></i>
-                <input type="text" name="search" id="search" class="search-input" placeholder="Pesquise um item...">
-            </div>
+            <form class="search-field" method="post">
+                <input type="text" name="searchField" id="search" class="search-input" placeholder="Pesquise um item..." >
+                <button type="submit" name="searchButton" class="search-button"><i class="fa-solid fa-magnifying-glass icon"></i></button>
+            </form>
         </div>
         <div class="cards">
             <?php if (empty($produtosByCat)) : ?>
